@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments::page_head('Checkout')}"></head>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<div th:replace="~{fragments::navbar}"></div>
+
+<body class="p-4">
+<div class="container">
+    <h2>✅ Payment Authorization Result</h2>
+    <p><strong>Transaction ID:</strong> <span id="txnId"></span></p>
+    <p><strong>Description:</strong> <span id="desc"></span></p>
+    <p><strong>Message Type:</strong> <span id="msgType"></span></p>
+
+    <h5>Bank List</h5>
+    <ul id="bankList" class="list-group"></ul>
+
+    <a href="index.html" class="btn btn-primary mt-3">Make Another Payment</a>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const response = sessionStorage.getItem("paymentResponse");
+
+        if (!response) {
+            alert("❌ No response found. Redirecting...");
+            window.location.href = "index.html";
+            return;
+        }
+
+        const result = JSON.parse(response);
+        document.getElementById("txnId").textContent = result.bfs_bfsTxnId || "N/A";
+        document.getElementById("desc").textContent = result.bfs_responseDesc || "N/A";
+        document.getElementById("msgType").textContent = result.bfs_msgType || "N/A";
+
+        const bankList = result.bfs_bankList?.split("#") || [];
+        const bankListElement = document.getElementById("bankList");
+        bankListElement.innerHTML = "";
+
+        bankList.forEach(bank => {
+            const [code, name] = bank.split("~");
+            const li = document.createElement("li");
+            li.className = "list-group-item";
+            li.textContent = `${name} (${code})`;
+            bankListElement.appendChild(li);
+        });
+
+        // Optional: Clear sessionStorage if needed
+        // sessionStorage.removeItem("paymentResponse");
+    });
+</script>
+</body>
+
+<!-- Footer -->
+<div th:replace="~{fragments::footer}"></div>
+
+<!-- Scripts -->
+<script th:src="@{/js/checkout.js}"></script>
+</body>
+</html>

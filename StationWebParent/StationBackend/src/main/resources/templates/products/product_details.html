@@ -1,0 +1,90 @@
+<div th:fragment="content" class="container mt-4" id="divProductDetails">
+    <div th:if="${product.details == null or product.details.isEmpty()}"
+         class="card shadow-sm p-4 mb-3 detail-section">
+        <div class="row g-3 align-items-center">
+            <div class="col-md-5">
+                <label class="form-label fw-semibold">Name</label>
+                <input type="text" class="form-control detail-name"
+                       name="detailNames"
+                       maxlength="255"
+                       placeholder="Enter name"/>
+            </div>
+            <div class="col-md-5">
+                <label class="form-label fw-semibold">Value</label>
+                <input type="text" class="form-control detail-value"
+                       name="detailValues"
+                       maxlength="255"
+                       placeholder="Enter value"/>
+            </div>
+            <div class="col-md-2 d-flex align-items-end">
+                <button type="button" class="btn btn-outline-danger remove-btn">
+                    <i class="fas fa-times"></i> Remove
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Existing Details -->
+    <div th:each="detail, status : ${product.details}"
+         class="card shadow-sm p-4 mb-3 detail-section"
+         th:id="'divDetail' + ${status.index}">
+        <div class="row g-3 align-items-center">
+            <div class="col-md-5">
+                <label class="form-label fw-semibold">Name</label>
+                <input type="text" class="form-control detail-name"
+                       name="detailNames"
+                       th:value="${detail.name}"
+                       maxlength="255"
+                       placeholder="Enter name"
+                       th:required="${#strings.isEmpty(detail.name)}"/>
+                <input type="hidden" name="existingDetailIds" th:value="${detail.id}"/>
+            </div>
+            <div class="col-md-5">
+                <label class="form-label fw-semibold">Value</label>
+                <input type="text" class="form-control detail-value"
+                       name="detailValues"
+                       th:value="${detail.value}"
+                       maxlength="255"
+                       placeholder="Enter value"
+                       th:required="${#strings.isEmpty(detail.value)}"/>
+            </div>
+            <div class="col-md-2 d-flex align-items-end">
+                <button type="button" class="btn btn-outline-danger remove-btn">
+                    <i class="fas fa-times"></i> Remove
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Detail Section Template (hidden) -->
+    <div class="card shadow-sm p-4 mb-3 detail-section" id="newDetailTemplate" style="display: none;">
+        <div class="row g-3 align-items-center">
+            <div class="col-md-5">
+                <label class="form-label fw-semibold">Name</label>
+                <input type="text" class="form-control detail-name"
+                       name="detailNames"
+                       maxlength="255"
+                       placeholder="Enter name"/>
+            </div>
+            <div class="col-md-5">
+                <label class="form-label fw-semibold">Value</label>
+                <input type="text" class="form-control detail-value"
+                       name="detailValues"
+                       maxlength="255"
+                       placeholder="Enter value"/>
+            </div>
+            <div class="col-md-2 d-flex align-items-end">
+                <button type="button" class="btn btn-outline-danger remove-btn">
+                    <i class="fas fa-times"></i> Remove
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Button -->
+    <div class="text-end mt-2">
+        <button type="button" class="btn btn-primary" onclick="addNextDetailSection()">
+            <i class="fas fa-plus"></i> Add Another Detail
+        </button>
+    </div>
+</div>

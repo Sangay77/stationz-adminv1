@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+
+<body>
+
+<section layout:fragment="content">
+    <div class="container py-4">
+        <div class="container mt-5">
+            <h2>Edit Article</h2>
+            <form th:action="@{/article/save}" th:object="${article}" method="post">
+                <input type="hidden" th:field="*{id}" />
+
+                <div class="mb-3">
+                    <label class="form-label">Title:</label>
+                    <input type="text" th:field="*{title}" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Content:</label>
+                    <textarea th:field="*{content}" class="form-control" rows="10" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-success">Update</button>
+                <a th:href="@{/articles}" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</section>
+<script>
+    const contextPath = /*[[${@environment.getProperty('server.servlet.context-path')}]]*/ '/';
+</script>
+
+<div layout:fragment="scripts">
+    <script th:src="@{/js/rich_text.js}"></script>
+</div>
+
+
+</body>
+</html>

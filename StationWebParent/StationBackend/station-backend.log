@@ -1,0 +1,302 @@
+2025-05-03T02:38:41.733+06:00  INFO 257520 --- [station-project-backend] [main] c.s.admin.product.ProductRepositoryTest  : Starting ProductRepositoryTest using Java 23.0.2 with PID 257520 (started by noko in /home/noko/Desktop/namhnumin/station-project/StationWebParent/StationBackend)
+2025-05-03T02:38:41.743+06:00  INFO 257520 --- [station-project-backend] [main] c.s.admin.product.ProductRepositoryTest  : No active profile set, falling back to 1 default profile: "default"
+2025-05-03T02:38:42.050+06:00  INFO 257520 --- [station-project-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-03T02:38:42.106+06:00  INFO 257520 --- [station-project-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 47 ms. Found 4 JPA repository interfaces.
+2025-05-03T02:38:42.372+06:00  INFO 257520 --- [station-project-backend] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-03T02:38:42.408+06:00  INFO 257520 --- [station-project-backend] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-05-03T02:38:42.435+06:00  INFO 257520 --- [station-project-backend] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-03T02:38:42.692+06:00  INFO 257520 --- [station-project-backend] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-03T02:38:42.718+06:00  INFO 257520 --- [station-project-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-03T02:38:43.003+06:00  INFO 257520 --- [station-project-backend] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@61ab6521
+2025-05-03T02:38:43.006+06:00  INFO 257520 --- [station-project-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-03T02:38:43.085+06:00  INFO 257520 --- [station-project-backend] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.41
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-03T02:38:43.934+06:00  INFO 257520 --- [station-project-backend] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-03T02:38:44.029+06:00  INFO 257520 --- [station-project-backend] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-03T02:38:44.303+06:00  INFO 257520 --- [station-project-backend] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-05-03T02:38:45.265+06:00  INFO 257520 --- [station-project-backend] [main] c.s.admin.product.ProductRepositoryTest  : Started ProductRepositoryTest in 3.945 seconds (process running for 4.955)
+2025-05-03T02:38:45.981+06:00  INFO 257520 --- [station-project-backend] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-03T02:38:45.984+06:00  INFO 257520 --- [station-project-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-05-03T02:38:45.994+06:00  INFO 257520 --- [station-project-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-05-03T03:12:14.739+06:00  INFO 260892 --- [station-project-backend] [main] c.s.admin.product.ProductRepositoryTest  : Starting ProductRepositoryTest using Java 23.0.2 with PID 260892 (started by noko in /home/noko/Desktop/namhnumin/station-project/StationWebParent/StationBackend)
+2025-05-03T03:12:14.741+06:00  INFO 260892 --- [station-project-backend] [main] c.s.admin.product.ProductRepositoryTest  : No active profile set, falling back to 1 default profile: "default"
+2025-05-03T03:12:15.092+06:00  INFO 260892 --- [station-project-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-03T03:12:15.150+06:00  INFO 260892 --- [station-project-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 49 ms. Found 4 JPA repository interfaces.
+2025-05-03T03:12:15.459+06:00  INFO 260892 --- [station-project-backend] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-03T03:12:15.508+06:00  INFO 260892 --- [station-project-backend] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-05-03T03:12:15.548+06:00  INFO 260892 --- [station-project-backend] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-03T03:12:15.872+06:00  INFO 260892 --- [station-project-backend] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-03T03:12:15.900+06:00  INFO 260892 --- [station-project-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-03T03:12:16.236+06:00  INFO 260892 --- [station-project-backend] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@23b71d24
+2025-05-03T03:12:16.237+06:00  INFO 260892 --- [station-project-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-03T03:12:16.305+06:00  INFO 260892 --- [station-project-backend] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.41
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-03T03:12:17.274+06:00  INFO 260892 --- [station-project-backend] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-03T03:12:17.346+06:00  INFO 260892 --- [station-project-backend] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-03T03:12:17.607+06:00  INFO 260892 --- [station-project-backend] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-05-03T03:12:18.754+06:00  INFO 260892 --- [station-project-backend] [main] c.s.admin.product.ProductRepositoryTest  : Started ProductRepositoryTest in 4.457 seconds (process running for 5.503)
+2025-05-03T03:12:19.340+06:00  WARN 260892 --- [station-project-backend] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1062, SQLState: 23000
+2025-05-03T03:12:19.340+06:00 ERROR 260892 --- [station-project-backend] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : Duplicate entry 'Samsung' for key 'products.UK8qwq8q3hk7cxkp9gruxupnif5'
+2025-05-03T03:12:19.373+06:00  WARN 260892 --- [station-project-backend] [main] o.s.test.context.TestContextManager      : Caught exception while invoking 'afterTestMethod' callback on TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener] for test method [public void com.station.admin.product.ProductRepositoryTest.createProduct()] and test instance [com.station.admin.product.ProductRepositoryTest@7e941cc8]
+
+org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:804) ~[spring-tx-6.2.5.jar:6.2.5]
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:758) ~[spring-tx-6.2.5.jar:6.2.5]
+	at org.springframework.test.context.transaction.TransactionContext.endTransaction(TransactionContext.java:135) ~[spring-test-6.2.5.jar:6.2.5]
+	at org.springframework.test.context.transaction.TransactionalTestExecutionListener.afterTestMethod(TransactionalTestExecutionListener.java:272) ~[spring-test-6.2.5.jar:6.2.5]
+	at org.springframework.test.context.TestContextManager.afterTestMethod(TestContextManager.java:488) ~[spring-test-6.2.5.jar:6.2.5]
+	at org.springframework.test.context.junit.jupiter.SpringExtension.afterEach(SpringExtension.java:275) ~[spring-test-6.2.5.jar:6.2.5]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeAfterEachCallbacks$13(TestMethodTestDescriptor.java:260) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeAllAfterMethodsOrCallbacks$14(TestMethodTestDescriptor.java:276) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeAllAfterMethodsOrCallbacks$15(TestMethodTestDescriptor.java:276) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.platform.commons.util.CollectionUtils.forEachInReverseOrder(CollectionUtils.java:240) ~[junit-platform-commons-1.11.4.jar:1.11.4]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeAllAfterMethodsOrCallbacks(TestMethodTestDescriptor.java:275) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeAfterEachCallbacks(TestMethodTestDescriptor.java:259) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:144) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:68) ~[junit-jupiter-engine-5.11.4.jar:5.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:156) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54) ~[junit-platform-engine-1.11.4.jar:1.11.4]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198) ~[junit-platform-launcher-1.11.4.jar:1.11.4]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169) ~[junit-platform-launcher-1.11.4.jar:1.11.4]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93) ~[junit-platform-launcher-1.11.4.jar:1.11.4]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58) ~[junit-platform-launcher-1.11.4.jar:1.11.4]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141) ~[junit-platform-launcher-1.11.4.jar:1.11.4]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57) ~[junit-platform-launcher-1.11.4.jar:1.11.4]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103) ~[junit-platform-launcher-1.11.4.jar:1.11.4]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85) ~[junit-platform-launcher-1.11.4.jar:1.11.4]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47) ~[junit-platform-launcher-1.11.4.jar:1.11.4]
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:63) ~[junit-platform-launcher-1.11.4.jar:1.11.4]
+	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:57) ~[junit5-rt.jar:na]
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38) ~[junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11) ~[idea_rt.jar:na]
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35) ~[junit-rt.jar:na]
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:231) ~[junit-rt.jar:na]
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:55) ~[junit-rt.jar:na]
+
+2025-05-03T03:12:19.435+06:00  INFO 260892 --- [station-project-backend] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-03T03:12:19.438+06:00  INFO 260892 --- [station-project-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-05-03T03:12:19.450+06:00  INFO 260892 --- [station-project-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-05-03T03:23:47.874+06:00  INFO 262538 --- [station-project-backend] [main] c.s.admin.product.ProductRepositoryTest  : Starting ProductRepositoryTest using Java 23.0.2 with PID 262538 (started by noko in /home/noko/Desktop/namhnumin/station-project/StationWebParent/StationBackend)
+2025-05-03T03:23:47.876+06:00  INFO 262538 --- [station-project-backend] [main] c.s.admin.product.ProductRepositoryTest  : No active profile set, falling back to 1 default profile: "default"
+2025-05-03T03:23:48.291+06:00  INFO 262538 --- [station-project-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-03T03:23:48.371+06:00  INFO 262538 --- [station-project-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 69 ms. Found 4 JPA repository interfaces.
+2025-05-03T03:23:48.731+06:00  INFO 262538 --- [station-project-backend] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-03T03:23:48.782+06:00  INFO 262538 --- [station-project-backend] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-05-03T03:23:48.823+06:00  INFO 262538 --- [station-project-backend] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-03T03:23:49.117+06:00  INFO 262538 --- [station-project-backend] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-03T03:23:49.143+06:00  INFO 262538 --- [station-project-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-03T03:23:49.445+06:00  INFO 262538 --- [station-project-backend] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@43588265
+2025-05-03T03:23:49.447+06:00  INFO 262538 --- [station-project-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-03T03:23:49.528+06:00  INFO 262538 --- [station-project-backend] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.41
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-03T03:23:50.339+06:00  INFO 262538 --- [station-project-backend] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-03T03:23:50.408+06:00  INFO 262538 --- [station-project-backend] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-03T03:23:50.703+06:00  INFO 262538 --- [station-project-backend] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-05-03T03:23:51.678+06:00  INFO 262538 --- [station-project-backend] [main] c.s.admin.product.ProductRepositoryTest  : Started ProductRepositoryTest in 4.224 seconds (process running for 5.247)
+2025-05-03T03:23:52.290+06:00  INFO 262538 --- [station-project-backend] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-03T03:23:52.292+06:00  INFO 262538 --- [station-project-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-05-03T03:23:52.298+06:00  INFO 262538 --- [station-project-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-05-03T03:24:09.926+06:00  INFO 262711 --- [station-project-backend] [main] c.s.admin.product.ProductRepositoryTest  : Starting ProductRepositoryTest using Java 23.0.2 with PID 262711 (started by noko in /home/noko/Desktop/namhnumin/station-project/StationWebParent/StationBackend)
+2025-05-03T03:24:09.928+06:00  INFO 262711 --- [station-project-backend] [main] c.s.admin.product.ProductRepositoryTest  : No active profile set, falling back to 1 default profile: "default"
+2025-05-03T03:24:10.273+06:00  INFO 262711 --- [station-project-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-03T03:24:10.326+06:00  INFO 262711 --- [station-project-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 45 ms. Found 4 JPA repository interfaces.
+2025-05-03T03:24:10.612+06:00  INFO 262711 --- [station-project-backend] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-03T03:24:10.650+06:00  INFO 262711 --- [station-project-backend] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-05-03T03:24:10.679+06:00  INFO 262711 --- [station-project-backend] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-03T03:24:10.908+06:00  INFO 262711 --- [station-project-backend] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-03T03:24:10.932+06:00  INFO 262711 --- [station-project-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-03T03:24:11.265+06:00  INFO 262711 --- [station-project-backend] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4adf3582
+2025-05-03T03:24:11.267+06:00  INFO 262711 --- [station-project-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-03T03:24:11.346+06:00  INFO 262711 --- [station-project-backend] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.41
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-03T03:24:12.216+06:00  INFO 262711 --- [station-project-backend] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-03T03:24:12.280+06:00  INFO 262711 --- [station-project-backend] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-03T03:24:12.596+06:00  INFO 262711 --- [station-project-backend] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-05-03T03:24:13.706+06:00  INFO 262711 --- [station-project-backend] [main] c.s.admin.product.ProductRepositoryTest  : Started ProductRepositoryTest in 4.23 seconds (process running for 5.279)
+2025-05-03T03:24:14.331+06:00  INFO 262711 --- [station-project-backend] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-03T03:24:14.332+06:00  INFO 262711 --- [station-project-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-05-03T03:24:14.338+06:00  INFO 262711 --- [station-project-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-05-03T03:24:24.125+06:00  INFO 262836 --- [station-project-backend] [main] c.s.admin.product.ProductRepositoryTest  : Starting ProductRepositoryTest using Java 23.0.2 with PID 262836 (started by noko in /home/noko/Desktop/namhnumin/station-project/StationWebParent/StationBackend)
+2025-05-03T03:24:24.127+06:00  INFO 262836 --- [station-project-backend] [main] c.s.admin.product.ProductRepositoryTest  : No active profile set, falling back to 1 default profile: "default"
+2025-05-03T03:24:24.482+06:00  INFO 262836 --- [station-project-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-03T03:24:24.550+06:00  INFO 262836 --- [station-project-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 56 ms. Found 4 JPA repository interfaces.
+2025-05-03T03:24:24.886+06:00  INFO 262836 --- [station-project-backend] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-03T03:24:24.940+06:00  INFO 262836 --- [station-project-backend] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-05-03T03:24:24.977+06:00  INFO 262836 --- [station-project-backend] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-03T03:24:25.220+06:00  INFO 262836 --- [station-project-backend] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-03T03:24:25.244+06:00  INFO 262836 --- [station-project-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-03T03:24:25.547+06:00  INFO 262836 --- [station-project-backend] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4adf3582
+2025-05-03T03:24:25.549+06:00  INFO 262836 --- [station-project-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-03T03:24:25.623+06:00  INFO 262836 --- [station-project-backend] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.41
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-03T03:24:26.561+06:00  INFO 262836 --- [station-project-backend] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-03T03:24:26.639+06:00  INFO 262836 --- [station-project-backend] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-03T03:24:26.888+06:00  INFO 262836 --- [station-project-backend] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-05-03T03:24:28.055+06:00  INFO 262836 --- [station-project-backend] [main] c.s.admin.product.ProductRepositoryTest  : Started ProductRepositoryTest in 4.36 seconds (process running for 5.364)
+2025-05-03T03:24:28.693+06:00  INFO 262836 --- [station-project-backend] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-03T03:24:28.695+06:00  INFO 262836 --- [station-project-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-05-03T03:24:28.701+06:00  INFO 262836 --- [station-project-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-05-03T03:24:41.709+06:00  INFO 263080 --- [station-project-backend] [main] c.s.admin.product.ProductRepositoryTest  : Starting ProductRepositoryTest using Java 23.0.2 with PID 263080 (started by noko in /home/noko/Desktop/namhnumin/station-project/StationWebParent/StationBackend)
+2025-05-03T03:24:41.711+06:00  INFO 263080 --- [station-project-backend] [main] c.s.admin.product.ProductRepositoryTest  : No active profile set, falling back to 1 default profile: "default"
+2025-05-03T03:24:42.172+06:00  INFO 263080 --- [station-project-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-03T03:24:42.256+06:00  INFO 263080 --- [station-project-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 71 ms. Found 4 JPA repository interfaces.
+2025-05-03T03:24:42.665+06:00  INFO 263080 --- [station-project-backend] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-03T03:24:42.724+06:00  INFO 263080 --- [station-project-backend] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-05-03T03:24:42.769+06:00  INFO 263080 --- [station-project-backend] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-03T03:24:43.075+06:00  INFO 263080 --- [station-project-backend] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-03T03:24:43.101+06:00  INFO 263080 --- [station-project-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-03T03:24:43.399+06:00  INFO 263080 --- [station-project-backend] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@57e4b86c
+2025-05-03T03:24:43.401+06:00  INFO 263080 --- [station-project-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-03T03:24:43.477+06:00  INFO 263080 --- [station-project-backend] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.41
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-03T03:24:44.578+06:00  INFO 263080 --- [station-project-backend] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-03T03:24:44.641+06:00  INFO 263080 --- [station-project-backend] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-03T03:24:44.880+06:00  INFO 263080 --- [station-project-backend] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-05-03T03:24:45.826+06:00  INFO 263080 --- [station-project-backend] [main] c.s.admin.product.ProductRepositoryTest  : Started ProductRepositoryTest in 4.567 seconds (process running for 5.702)
+2025-05-03T03:24:46.411+06:00  INFO 263080 --- [station-project-backend] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-03T03:24:46.412+06:00  INFO 263080 --- [station-project-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-05-03T03:24:46.418+06:00  INFO 263080 --- [station-project-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-05-03T03:25:13.718+06:00  INFO 263328 --- [station-project-backend] [main] c.s.admin.product.ProductRepositoryTest  : Starting ProductRepositoryTest using Java 23.0.2 with PID 263328 (started by noko in /home/noko/Desktop/namhnumin/station-project/StationWebParent/StationBackend)
+2025-05-03T03:25:13.720+06:00  INFO 263328 --- [station-project-backend] [main] c.s.admin.product.ProductRepositoryTest  : No active profile set, falling back to 1 default profile: "default"
+2025-05-03T03:25:14.072+06:00  INFO 263328 --- [station-project-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-03T03:25:14.129+06:00  INFO 263328 --- [station-project-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 48 ms. Found 4 JPA repository interfaces.
+2025-05-03T03:25:14.435+06:00  INFO 263328 --- [station-project-backend] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-03T03:25:14.476+06:00  INFO 263328 --- [station-project-backend] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-05-03T03:25:14.506+06:00  INFO 263328 --- [station-project-backend] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-03T03:25:14.751+06:00  INFO 263328 --- [station-project-backend] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-03T03:25:14.787+06:00  INFO 263328 --- [station-project-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-03T03:25:15.123+06:00  INFO 263328 --- [station-project-backend] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@643f6179
+2025-05-03T03:25:15.125+06:00  INFO 263328 --- [station-project-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-03T03:25:15.228+06:00  INFO 263328 --- [station-project-backend] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.41
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-03T03:25:16.206+06:00  INFO 263328 --- [station-project-backend] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-03T03:25:16.277+06:00  INFO 263328 --- [station-project-backend] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-03T03:25:16.539+06:00  INFO 263328 --- [station-project-backend] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-05-03T03:25:17.813+06:00  INFO 263328 --- [station-project-backend] [main] c.s.admin.product.ProductRepositoryTest  : Started ProductRepositoryTest in 4.52 seconds (process running for 5.599)
+2025-05-03T03:25:18.580+06:00  INFO 263328 --- [station-project-backend] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-03T03:25:18.584+06:00  INFO 263328 --- [station-project-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-05-03T03:25:18.591+06:00  INFO 263328 --- [station-project-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-05-03T03:40:29.822+06:00  INFO 265146 --- [station-project-backend] [main] c.s.admin.product.ProductRepositoryTest  : Starting ProductRepositoryTest using Java 23.0.2 with PID 265146 (started by noko in /home/noko/Desktop/namhnumin/station-project/StationWebParent/StationBackend)
+2025-05-03T03:40:29.826+06:00  INFO 265146 --- [station-project-backend] [main] c.s.admin.product.ProductRepositoryTest  : No active profile set, falling back to 1 default profile: "default"
+2025-05-03T03:40:30.571+06:00  INFO 265146 --- [station-project-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-03T03:40:30.689+06:00  INFO 265146 --- [station-project-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 102 ms. Found 4 JPA repository interfaces.
+2025-05-03T03:40:31.342+06:00  INFO 265146 --- [station-project-backend] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-03T03:40:31.410+06:00  INFO 265146 --- [station-project-backend] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-05-03T03:40:31.461+06:00  INFO 265146 --- [station-project-backend] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-03T03:40:31.907+06:00  INFO 265146 --- [station-project-backend] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-03T03:40:31.949+06:00  INFO 265146 --- [station-project-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-03T03:40:32.479+06:00  INFO 265146 --- [station-project-backend] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@43588265
+2025-05-03T03:40:32.483+06:00  INFO 265146 --- [station-project-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-03T03:40:32.622+06:00  INFO 265146 --- [station-project-backend] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.41
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-03T03:40:34.119+06:00  INFO 265146 --- [station-project-backend] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-03T03:40:34.243+06:00  INFO 265146 --- [station-project-backend] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-03T03:40:34.647+06:00  INFO 265146 --- [station-project-backend] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-05-03T03:40:36.301+06:00  INFO 265146 --- [station-project-backend] [main] c.s.admin.product.ProductRepositoryTest  : Started ProductRepositoryTest in 7.359 seconds (process running for 9.339)
+2025-05-03T03:40:37.236+06:00  INFO 265146 --- [station-project-backend] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-03T03:40:37.240+06:00  INFO 265146 --- [station-project-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-05-03T03:40:37.255+06:00  INFO 265146 --- [station-project-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-05-03T03:40:57.868+06:00  INFO 265310 --- [station-project-backend] [main] c.s.admin.product.ProductRepositoryTest  : Starting ProductRepositoryTest using Java 23.0.2 with PID 265310 (started by noko in /home/noko/Desktop/namhnumin/station-project/StationWebParent/StationBackend)
+2025-05-03T03:40:57.872+06:00  INFO 265310 --- [station-project-backend] [main] c.s.admin.product.ProductRepositoryTest  : No active profile set, falling back to 1 default profile: "default"
+2025-05-03T03:40:58.685+06:00  INFO 265310 --- [station-project-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-03T03:40:58.825+06:00  INFO 265310 --- [station-project-backend] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 119 ms. Found 4 JPA repository interfaces.
+2025-05-03T03:40:59.573+06:00  INFO 265310 --- [station-project-backend] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-03T03:40:59.678+06:00  INFO 265310 --- [station-project-backend] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-05-03T03:40:59.745+06:00  INFO 265310 --- [station-project-backend] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-03T03:41:00.285+06:00  INFO 265310 --- [station-project-backend] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-03T03:41:00.332+06:00  INFO 265310 --- [station-project-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-03T03:41:00.946+06:00  INFO 265310 --- [station-project-backend] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@57e4b86c
+2025-05-03T03:41:00.949+06:00  INFO 265310 --- [station-project-backend] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-03T03:41:01.085+06:00  INFO 265310 --- [station-project-backend] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.41
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-03T03:41:02.647+06:00  INFO 265310 --- [station-project-backend] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-03T03:41:02.782+06:00  INFO 265310 --- [station-project-backend] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-03T03:41:03.228+06:00  INFO 265310 --- [station-project-backend] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-05-03T03:41:05.005+06:00  INFO 265310 --- [station-project-backend] [main] c.s.admin.product.ProductRepositoryTest  : Started ProductRepositoryTest in 8.202 seconds (process running for 10.193)
+2025-05-03T03:41:05.887+06:00  INFO 265310 --- [station-project-backend] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-03T03:41:05.891+06:00  INFO 265310 --- [station-project-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-05-03T03:41:05.905+06:00  INFO 265310 --- [station-project-backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

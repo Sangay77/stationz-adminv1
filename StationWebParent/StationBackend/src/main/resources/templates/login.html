@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{fragments/common::page_head(${pageTitle}, 'none')}"></head>
+<body>
+
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+
+    <div class="row w-100 shadow-sm border rounded overflow-hidden" style="max-width: 900px; min-height: 400px;">
+
+        <!-- Logo Section -->
+        <div class="col-md-6 bg-light d-flex flex-column align-items-center justify-content-center p-4">
+            <img id="thumbnail"
+                 th:src="@{${SITE_LOGO}}"
+                 alt="Site Logo"
+                 class="img-fluid mb-3"
+                 style="max-height: 120px;" />
+            <h4 class="fw-bold text-primary text-center">[[${SITE_NAME}]]</h4>
+        </div>
+
+        <!-- Login Form Section -->
+        <div class="col-md-6 d-flex align-items-center justify-content-center bg-white p-4">
+            <form th:action="@{/login}" method="post" class="w-100" style="max-width: 350px;">
+                <h5 class="text-center mb-4">Access to Station Panel</h5>
+
+                <div th:if="${param.error}">
+                    <p class="text-danger text-center small">
+                        Invalid email or password. Please try again.
+                    </p>
+                </div>
+
+
+
+                <!-- Logout Message -->
+                <div th:if="${param.logout}">
+                    <p class="text-success text-center small">You have been logged out successfully.</p>
+                </div>
+
+                <div class="mb-3">
+                    <input type="email" name="email" class="form-control" placeholder="Email" required autofocus />
+                </div>
+
+                <div class="mb-3">
+                    <input type="password" name="password" class="form-control" placeholder="Password" required />
+                </div>
+
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" name="remember-me" id="rememberMe" />
+                    <label class="form-check-label" for="rememberMe">Remember me</label>
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

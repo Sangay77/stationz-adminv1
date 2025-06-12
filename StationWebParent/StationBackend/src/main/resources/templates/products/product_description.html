@@ -1,0 +1,23 @@
+<div th:fragment="content" class="container mt-4">
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Description:</label>
+        <div class="col-sm-10">
+            <textarea th:field="*{shortDescription}" id="shortDescription" class="form-control" rows="5"></textarea>
+        </div>
+    </div><br>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Full Description:</label>
+        <div class="col-sm-10">
+            <textarea th:field="*{fullDescription}" id="fullDescription" class="form-control" rows="10"></textarea>
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            $("#shortDescription").richText();
+            $("#fullDescription").richText();
+        });
+    </script>
+</div>

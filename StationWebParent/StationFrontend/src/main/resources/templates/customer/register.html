@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments::page_head(${pageTitle})}"></head>
+
+<body class="container-fluid bg-light">
+<div th:replace="~{fragments::navbar}"></div>
+
+<main class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-xl-6">
+            <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+                <div class="row g-0">
+                    <!-- Image Section -->
+                    <div class="col-md-5 d-flex align-items-center justify-content-center bg-gradient-primary">
+                        <div class="p-4 text-center">
+                            <img th:src="@{/images/station_logo.jpeg}" alt="Create Account"
+                                 class="img-fluid mb-4" style="max-height: 200px;">
+                            <h3 class="text-white mb-0">Join Us Today!</h3>
+                            <p class="text-white-50">Create your account in seconds</p>
+                        </div>
+                    </div>
+
+                    <!-- Form Section -->
+                    <div class="col-md-7">
+                        <div class="card-body p-4 p-md-5">
+                            <h3 class="text-center mb-4">Create New Account</h3>
+
+                            <form th:action="@{/create_customer}" method="post" th:object="${customer}">
+                                <div class="row g-3">
+                                    <!-- Name Fields -->
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="text" th:field="*{firstName}"
+                                                   class="form-control" id="firstName" required>
+                                            <label for="firstName">First Name</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="text" th:field="*{lastName}"
+                                                   class="form-control" id="lastName" required>
+                                            <label for="lastName">Last Name</label>
+                                        </div>
+                                    </div>
+
+                                    <!-- Contact Info -->
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="email" th:field="*{email}"
+                                                   class="form-control" id="email" required>
+                                            <label for="email">Email Address</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="tel" th:field="*{phoneNumber}"
+                                                   class="form-control" id="phoneNumber">
+                                            <label for="phoneNumber">Phone Number</label>
+                                        </div>
+                                    </div>
+
+                                    <!-- Password Fields -->
+                                    <div class="col-md-6">
+                                        <div class="form-floating position-relative">
+                                            <input type="password" th:field="*{password}"
+                                                   id="password" class="form-control" required
+                                                   oninput="checkPasswordMatch(document.getElementById('confirmPassword'))">
+                                            <label for="password">Password</label>
+                                            <i class="bi bi-eye-slash password-toggle"
+                                               onclick="togglePasswordVisibility('password')"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-floating position-relative">
+                                            <input type="password" id="confirmPassword"
+                                                   class="form-control" required
+                                                   oninput="checkPasswordMatch(this)">
+                                            <label for="confirmPassword">Confirm Password</label>
+                                            <i class="bi bi-eye-slash password-toggle"
+                                               onclick="togglePasswordVisibility('confirmPassword')"></i>
+                                            <div id="passwordMismatchMsg" class="invalid-feedback">
+                                                Passwords do not match
+                                            </div>
+                                            <div id="passwordMatchMsg" class="valid-feedback">
+                                                Passwords match!
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Address Section -->
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="text" th:field="*{address}"
+                                                   class="form-control" id="address">
+                                            <label for="address">Street Address</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="text" th:field="*{city}"
+                                                   class="form-control" id="city">
+                                            <label for="city">City</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="text" th:field="*{state}"
+                                                   class="form-control" id="state">
+                                            <label for="state">State</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="text" th:field="*{postalCode}"
+                                                   class="form-control" id="postalCode">
+                                            <label for="postalCode">Postal Code</label>
+                                        </div>
+                                    </div>
+
+                                    <!-- Form Actions -->
+                                    <div class="col-12 mt-3">
+                                        <div class="d-grid gap-3 d-md-flex justify-content-md-end">
+                                            <a th:href="@{/}" class="btn btn-outline-secondary px-4">
+                                                <i class="bi bi-x-lg me-2"></i>Cancel
+                                            </a>
+                                            <button type="submit" class="btn btn-primary px-4 gradient-button">
+                                                <i class="bi bi-person-plus me-2"></i>Create Account
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Login Link -->
+                                    <div class="col-12 mt-4 text-center">
+                                        <p class="mb-0">
+                                            Already have an account?
+                                            <a th:href="@{/login}" class="text-decoration-none fw-bold">Login</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div th:replace="~{fragments::footer}"></div>
+
+<style>
+    .bg-gradient-primary {
+        background: linear-gradient(135deg, #4e73df, #224abe);
+    }
+
+    .card {
+        border-radius: 1rem;
+        overflow: hidden;
+    }
+
+    .password-toggle {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: #6c757d;
+    }
+
+    .gradient-button {
+        background: linear-gradient(45deg, #4e73df, #224abe);
+        border: none;
+        transition: all 0.3s ease;
+    }
+
+    .gradient-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .form-floating > .form-control:focus ~ label,
+    .form-floating > .form-control:not(:placeholder-shown) ~ label {
+        transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+    }
+</style>
+
+<script>
+    function togglePasswordVisibility(fieldId) {
+        const field = document.getElementById(fieldId);
+        const icon = document.querySelector(`[onclick="togglePasswordVisibility('${fieldId}')]`);
+        if (field.type === 'password') {
+            field.type = 'text';
+            icon.classList.replace('bi-eye-slash', 'bi-eye');
+        } else {
+            field.type = 'password';
+            icon.classList.replace('bi-eye', 'bi-eye-slash');
+        }
+    }
+
+    function checkPasswordMatch(confirmField) {
+        const password = document.getElementById('password').value;
+        const confirmPassword = confirmField.value;
+        const mismatchMsg = document.getElementById('passwordMismatchMsg');
+        const matchMsg = document.getElementById('passwordMatchMsg');
+
+        if (!password || !confirmPassword) {
+            mismatchMsg.style.display = 'none';
+            matchMsg.style.display = 'none';
+            confirmField.classList.remove('is-invalid', 'is-valid');
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            mismatchMsg.style.display = 'block';
+            matchMsg.style.display = 'none';
+            confirmField.classList.add('is-invalid');
+            confirmField.classList.remove('is-valid');
+        } else {
+            mismatchMsg.style.display = 'none';
+            matchMsg.style.display = 'block';
+            confirmField.classList.add('is-valid');
+            confirmField.classList.remove('is-invalid');
+        }
+    }
+</script>
+
+<!-- JavaScript validation files -->
+<script th:src="@{/js/validatePassword.js}"></script>
+<script th:src="@{/js/validateDuplicateEmail.js}"></script>
+<script th:src="@{/js/modalUtils.js}"></script>
+
+</body>
+</html>

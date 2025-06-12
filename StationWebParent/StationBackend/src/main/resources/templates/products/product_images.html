@@ -1,0 +1,42 @@
+<div th:fragment="content" class="container mt-4">
+    <div class="row" id="productImagesContainer">
+        <!-- Main Image Section -->
+        <div class="col border m-3 p-2">
+            <div><label>Main Image:</label></div>
+            <div class="m-2">
+                <img id="thumbnail" alt="Main image preview" class="img-fluid"
+                     th:src="${product.mainImagePath != null} ? @{${product.mainImagePath}} : @{/images/image_thumbnail.png}" />
+            </div>
+            <div>
+                <input type="file" id="fileImage" name="fileImage"
+                       th:required="${product.mainImage==null}"
+                       accept="image/png,image/jpeg" />
+            </div>
+        </div>
+
+        <!-- Existing Extra Images -->
+        <div th:each="image, iterStat : ${product.images}" class="col border m-3 p-2">
+            <div><label>Extra Image #<span th:text="${iterStat.index + 1}">1</span>:</label></div>
+            <div class="m-2">
+                <img th:attr="id='extraThumbnail' + ${iterStat.index}"
+                     class="img-fluid"
+                     th:src="@{${image.imagePath}}"
+                     alt="Extra image preview"/>
+            </div>
+            <div>
+                <input type="file" th:attr="id='extraImage' + ${iterStat.index}"
+                       name="extraImages"
+                       accept="image/png,image/jpeg"/>
+                <input type="hidden" name="existingExtraImageIds" th:value="${image.id}"/>
+                <button type="button" class="btn btn-sm btn-danger mt-2"
+                        onclick="removeImageSection(this, true, ${image.id})">
+                    Remove
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <button type="button" class="btn btn-secondary mt-3" onclick="addExtraImageSection()">
+        + Add Another Image
+    </button>
+</div>

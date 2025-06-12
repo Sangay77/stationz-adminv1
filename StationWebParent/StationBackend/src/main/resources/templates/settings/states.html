@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>State Manager</title>
+
+    <!-- Bootstrap & FontAwesome -->
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/fontawesome/all.css}">
+    <link rel="stylesheet" th:href="@{/richtext/richtext.min.css}">
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body class="bg-light">
+
+<div th:fragment="content" class="container my-5">
+    <p>
+        Use this page to manage states/provinces that will be chosen by customers.
+        Click <strong>"Load Country List"</strong> first.
+    </p>
+
+    <div class="mb-3">
+        <input type="button" value="Load Country List" id="buttonLoadCountriesForStates" class="btn btn-primary" />
+        <input type="button" value="Load States" id="buttonLoadStates" class="btn btn-outline-primary ms-2" />
+    </div>
+
+    <div class="form-group row mb-3">
+        <label class="col-sm-2 col-form-label">Selected Country:</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="dropDownCountriesForStates"></select>
+        </div>
+    </div>
+
+    <div class="form-group row mb-3">
+        <label class="col-sm-2 col-form-label">All States/Provinces:</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="dropDownStates" size="8" style="height: 300px;"></select>
+        </div>
+    </div>
+
+    <div class="form-group row mb-3">
+        <label class="col-sm-2 col-form-label mt-2" id="labelStateName">State/Province Name:</label>
+        <div class="col-sm-6 mt-2">
+            <input type="text" class="form-control" id="fieldStateName" />
+        </div>
+
+        <div class="col-lg-4 mt-2 d-flex gap-2">
+            <input type="button" id="buttonAddState" value="New" class="btn btn-success" />
+            <input type="button" id="buttonUpdateState" value="Update" class="btn btn-warning" disabled />
+            <input type="button" id="buttonDeleteState" value="Delete" class="btn btn-danger" disabled />
+        </div>
+    </div>
+</div>
+
+<!-- Toast Component -->
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+    <div id="toastMessageBox" class="toast align-items-center text-white bg-primary border-0" role="alert">
+        <div class="d-flex">
+            <div class="toast-body" id="toastMessage">Message goes here</div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+        </div>
+    </div>
+</div>
+
+<!-- JS Scripts -->
+<script th:src="@{/webjars/jquery/3.7.0/jquery.min.js}"></script>
+<script th:src="@{/richtext/jquery.richtext.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js}"></script>
+
+
+</body>
+</html>

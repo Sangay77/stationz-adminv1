@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security6">
+
+<head th:replace="~{fragments::page_head('Verification Succeeded!')}"></head>
+
+<body>
+
+<div th:replace="~{fragments::navbar}"></div>
+
+<div style="margin-top: 40px;"></div>
+
+<div class="text-center">
+    <h1>Customer Verification</h1>
+    <h4>Congratulations! Your account has been verified.</h4>
+    <p><a th:href="@{/login}">Login here</a></p>
+</div>
+
+<div th:replace="~{fragments::footer}"></div>
+
+</body>
+</html>

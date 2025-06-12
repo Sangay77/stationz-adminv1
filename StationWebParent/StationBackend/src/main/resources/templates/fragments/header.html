@@ -1,0 +1,65 @@
+<header class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <div class="container-fluid">
+        <!-- Sidebar toggle button only visible on small devices -->
+        <button id="sidebarToggle" class="btn btn-primary d-lg-none me-2" aria-label="Toggle sidebar">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <a class="navbar-brand d-flex align-items-center" th:href="@{/}">
+<!--            <img  alt="Site Logo" th:src="@{${SITE_LOGO}}" style="height: 32px;" />-->
+            <span class="fw-bold">[[${SITE_NAME}]]</span>
+        </a>
+
+        <div class="ms-auto d-flex align-items-center">
+
+            <!-- Online status indicator -->
+            <span class="me-3" title="Online">
+                <i class="fas fa-circle text-success" style="font-size: 0.8rem;"></i>
+            </span>
+
+            <!-- Username and Avatar dropdown -->
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle d-flex align-items-center text-dark" href="#" id="userDropdown"
+                       role="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+                        <div class="d-flex align-items-center">
+                            <div class="me-2 d-none d-lg-block">
+                                <!-- Display authenticated user's full name -->
+                                <span sec:authentication="principal.fullname" class="fw-medium">User</span>
+                            </div>
+
+
+                            <div th:with="photoPath=${user != null} ? ${user.photosImagePath} : '/images/default-user.png'">
+                                <img id="thumbnail2" th:src="@{${photoPath}}"
+                                     alt="Photo Preview"
+                                     class="rounded-circle"
+                                     width="32" height="32"
+                                     onerror="this.onerror=null;this.src='/images/default-user.png';"/>
+                            </div>
+
+
+                        </div>
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 mt-2" aria-labelledby="userDropdown">
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" th:href="@{/account}">
+                                <i class="fas fa-user me-2 text-muted"></i> Profile
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider my-1"></li>
+                        <li>
+                            <form name="logoutForm" th:action="@{/logout}" method="post" id="logoutForm"></form>
+                            <a class="dropdown-item d-flex align-items-center text-danger" href="#"
+                               onclick="event.preventDefault(); document.getElementById('logoutForm').submit();">
+                                <i class="fas fa-sign-out-alt me-2"></i> Logout
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</header>

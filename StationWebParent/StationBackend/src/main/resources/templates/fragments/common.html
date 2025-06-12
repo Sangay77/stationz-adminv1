@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security6">
+<head>
+    <style>
+        .sortable-header a {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .sortable-header a:hover {
+            color: #0d6efd;
+        }
+
+        .search-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: flex-end;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-filter .filter-group {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .search-filter .filter-group label {
+            min-width: 70px;
+            margin-bottom: 0;
+        }
+
+        .results-summary {
+            background-color: #f8f9fa;
+            padding: 0.75rem 1rem;
+            border-radius: 0.25rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .pagination-container {
+            margin-top: 1.5rem;
+        }
+
+        .page-item.disabled .page-link {
+            opacity: 0.6;
+        }
+
+        .page-item.active .page-link {
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+<head th:fragment="page_head(title,remove)" th:remove="${remove}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>[[${title}]]- [[${SITE_NAME}]]</title>
+
+
+    <!-- ✅ Load jQuery FIRST -->
+    <script th:src="@{/webjars/jquery/3.7.0/jquery.min.js}"></script>
+
+    <!-- ✅ Then richtext plugin -->
+    <link rel="stylesheet" th:href="@{/richtext/richtext.min.css}"/>
+    <script th:src="@{/richtext/jquery.richtext.min.js}"></script>
+
+    <!-- Bootstrap and others -->
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/fontawesome/all.css}">
+<!--    <link rel="stylesheet" th:href="@{/style.css}">-->
+    <script th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/common.js}"></script>
+</head>
+
+<th th:fragment="sortableHeader(baseUrl, fieldName, displayName)"
+    th:with="sortField=${sortField ?: ''}, sortDir=${sortDir ?: 'asc'}">
+    <a class="text-white text-decoration-none"
+       th:href="@{${baseUrl + '/' + currentPage}(sortField=${fieldName},
+                  sortDir=${sortField == fieldName ? (sortDir == 'asc' ? 'desc' : 'asc') : 'asc'},
+                  keyword=${keyword ?: ''})}">
+        <span th:text="${displayName}">Header</span>
+        <span th:if="${sortField == fieldName}">
+            <i th:classappend="${sortDir == 'asc'} ? 'fa-solid fa-arrow-up' : 'fa-solid fa-arrow-down'"></i>
+        </span>
+        <span th:unless="${sortField == fieldName}">
+            <i class="fa-solid fa-arrows-up-down" style="opacity: 0.3"></i>
+        </span>
+    </a>
+</th>
+
+<div th:fragment="searchFilter(baseUrl)">
+    <form th:action="@{${baseUrl}}" class="d-flex justify-content-between mb-4">
+        <div class="d-flex">
+            <input type="hidden" name="sortField" th:value="${sortField}"/>
+            <input type="hidden" name="sortDir" th:value="${sortDir}"/>
+            <label for="keyword" class="form-label me-2">Filter:</label>
+            <input type="search"
+                   name="keyword"
+                   th:value="${keyword}"
+                   class="form-control"
+                   id="keyword"
+                   placeholder="Search"
+                   required/>
+        </div>
+        <div>
+            <input type="submit" value="Search" class="btn btn-primary"/>
+            <input type="button"
+                   value="Clear"
+                   class="btn btn-secondary ms-2"
+                   onclick="clearFilter('${baseUrl}')"/>
+        </div>
+    </form>
+</div>
+
+<div th:fragment="resultsSummary(entityName)" class="text-center m-1">
+    <span th:if="${totalItems > 0}">
+        Showing <span th:text="${entityName}">items</span> # Total Items: [[${totalItems}]]
+        Page [[${currentPage}]] of [[${totalPages}]]
+    </span>
+    <span th:unless="${totalItems > 0}">
+        No <span th:text="${entityName}">items</span> found.
+    </span>
+</div>
+
+<div th:fragment="pagination(baseUrl)" th:if="${totalPages > 1}">
+    <nav>
+        <ul class="pagination justify-content-center">
+            <!-- First Page -->
+            <li th:class="${currentPage > 1 ? 'page-item' : 'page-item disabled'}">
+                <a class="page-link"
+                   th:href="@{${baseUrl + '/1'}(
+                       sortField=${sortField},
+                       sortDir=${sortDir},
+                       keyword=${keyword}
+                   )}">
+                    First
+                </a>
+            </li>
+
+            <!-- Previous Page -->
+            <li th:class="${currentPage > 1 ? 'page-item' : 'page-item disabled'}">
+                <a class="page-link"
+                   th:href="@{${baseUrl + '/' + (currentPage - 1)}(
+                       sortField=${sortField},
+                       sortDir=${sortDir},
+                       keyword=${keyword}
+                   )}">
+                    Previous
+                </a>
+            </li>
+
+            <!-- Page Numbers -->
+            <li th:each="i : ${#numbers.sequence(1, totalPages)}"
+                th:class="${currentPage != i ? 'page-item' : 'page-item active'}">
+                <a class="page-link"
+                   th:href="@{${baseUrl + '/' + i}(
+                       sortField=${sortField},
+                       sortDir=${sortDir},
+                       keyword=${keyword}
+                   )}">
+                    [[${i}]]
+                </a>
+            </li>
+
+            <!-- Next Page -->
+            <li th:class="${currentPage < totalPages ? 'page-item' : 'page-item disabled'}">
+                <a class="page-link"
+                   th:href="@{${baseUrl + '/' + (currentPage + 1)}(
+                       sortField=${sortField},
+                       sortDir=${sortDir},
+                       keyword=${keyword}
+                   )}">
+                    Next
+                </a>
+            </li>
+
+            <!-- Last Page -->
+            <li th:class="${currentPage < totalPages ? 'page-item' : 'page-item disabled'}">
+                <a class="page-link"
+                   th:href="@{${baseUrl + '/' + totalPages}(
+                       sortField=${sortField},
+                       sortDir=${sortDir},
+                       keyword=${keyword}
+                   )}">
+                    Last
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<div th:fragment="modal_dialog" class="modal fade" id="modalMessage" tabindex="-1" aria-labelledby="modalTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-warning text-dark">
+                <h5 class="modal-title" id="modalTitle">Warning</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                Message goes here...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Modal Fragment -->
+<div th:fragment="deleteModal">
+    <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmModalLabel">Confirm Deletion</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete this item?</p>
+                    <p class="text-danger"><strong>This action cannot be undone.</strong></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="fas fa-times me-1"></i> Cancel
+                    </button>
+                    <a id="confirmDeleteBtn" href="#" class="btn btn-danger">
+                        <i class="fas fa-trash-alt me-1"></i> Delete
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:inline="javascript">
+    function clearFilter(baseUrl) {
+        window.location = baseUrl;
+    }
+
+    function showDeleteModal(button) {
+        const deleteUrl = button.getAttribute('data-url');
+        document.getElementById('confirmDeleteBtn').href = deleteUrl;
+        const modal = new bootstrap.Modal(document.getElementById('confirmModal'));
+        modal.show();
+    }
+</script>
+
+</body>
+</html>

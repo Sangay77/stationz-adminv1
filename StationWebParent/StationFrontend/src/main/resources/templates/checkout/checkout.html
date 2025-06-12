@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments::page_head('Checkout')}"></head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+
+<body>
+
+<!-- Navbar -->
+<div th:replace="~{fragments::navbar}"></div>
+
+<!-- Checkout Section -->
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card shadow-lg rounded-4 border-0">
+                <div class="card-body p-5">
+                    <h2 class="text-center mb-5 text-primary">🛒 Secure Checkout</h2>
+
+                    <!-- Checkout Form -->
+                    <form id="checkoutForm" class="needs-validation" novalidate>
+                        <input type="hidden" id="_csrf" name="_csrf" th:value="${_csrf.token}" />
+
+                        <div class="row gy-5 d-flex align-items-stretch">
+                            <!-- RMA Payment Info -->
+                            <div class="col-md-6 d-flex flex-column">
+                                <div class="d-flex align-items-center mb-4">
+                                    <img th:src="@{/images/rma.gif}" alt="RMA Logo" class="me-3 rounded" style="height: 50px;">
+                                    <h4 class="mb-0 text-primary">RMA Payment Gateway</h4>
+                                </div>
+
+                                <div class="form-floating mb-4">
+                                    <input type="text" name="accountNumber" class="form-control" id="accountNumber" placeholder="Account Number" required>
+                                    <label for="accountNumber">Account Number</label>
+                                    <div class="invalid-feedback">Please provide your account number.</div>
+                                </div>
+
+                                <div class="form-floating mb-4">
+                                    <input type="text" name="paymentDescription" class="form-control" id="bfs_paymentDesc" placeholder="Payment Description" required>
+                                    <label for="bfs_paymentDesc">Payment Description</label>
+                                    <div class="invalid-feedback">Please provide payment description.</div>
+                                </div>
+
+                                <div class="form-floating mb-4">
+                                    <input type="number" name="amount" class="form-control" id="txnAmount" placeholder="Amount" th:value="${estimatedTotal}" required>
+                                    <label for="txnAmount">Amount (Nu)</label>
+                                    <div class="invalid-feedback">Please confirm the payment amount.</div>
+                                </div>
+
+                                <div class="alert alert-info d-flex align-items-center gap-2 mt-auto shadow-sm" role="alert">
+                                    <i class="bi bi-info-circle-fill"></i>
+                                    <div>Make sure your wallet has sufficient balance before placing the order.</div>
+                                </div>
+                            </div>
+
+                            <!-- Order Summary -->
+                            <div class="col-md-6 d-flex flex-column">
+                                <h4 class="mb-4 text-primary">🧾 Order Summary</h4>
+
+                                <div class="list-group mb-4 shadow-sm rounded-3 flex-grow-1">
+                                    <div class="list-group-item d-flex justify-content-between align-items-center"
+                                         th:each="item : ${cartItems}">
+                                        <div>
+                                            <strong th:text="${item.product.shortName}"></strong>
+                                            <span class="text-muted" th:text="' × ' + ${item.quantity}"></span>
+                                        </div>
+                                        <span class="fw-semibold text-end" th:text="${item.subTotal} + ' Nu'"></span>
+                                    </div>
+                                    <div class="list-group-item d-flex justify-content-between bg-light">
+                                        <strong>Total</strong>
+                                        <strong class="text-success fs-5" th:text="${estimatedTotal} + ' Nu'"></strong>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-lg btn-primary w-100 shadow-lg mb-3">
+                                    ✅ Place Order Securely
+                                </button>
+
+                                <a th:href="@{/cart}" class="btn btn-outline-secondary w-100">
+                                    ⬅️ Back to Cart
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Bank Selection Section (shown after success) -->
+                    <div id="bankSelectionSection" class="d-none mt-4">
+                        <h5>Select Your Bank</h5>
+
+                        <div class="form-floating mb-3">
+                            <select id="bankSelect" class="form-select" required></select>
+                            <label for="bankSelect">Choose a bank</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="text" id="txnIdDisplay" class="form-control" readonly>
+                            <label for="txnIdDisplay">Transaction ID</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="text" id="userAccountNumber" class="form-control" placeholder="Enter your account number" required>
+                            <label for="userAccountNumber">Your Account Number</label>
+                        </div>
+
+                        <button id="proceedBtn" class="btn btn-success w-100">
+                            ➡️ Proceed to Payment
+                        </button>
+                    </div>
+
+                    <!-- OTP Section (initially hidden) -->
+                    <div id="otpSection" class="d-none mt-4">
+                        <h5>Enter OTP</h5>
+
+                        <div class="form-floating mb-3">
+                            <input type="text" id="otpInput" class="form-control" placeholder="Enter OTP" maxlength="6" required />
+                            <label for="otpInput">OTP Code</label>
+                            <div class="invalid-feedback">Please enter the OTP sent to your device.</div>
+                        </div>
+
+                        <button id="verifyOtpBtn" class="btn btn-primary w-100">Verify OTP</button>
+                    </div>
+
+                    <div id="paymentSuccessSection" class="d-none text-center mt-4">
+                        <h2>🎉 Payment Completed Successfully!</h2>
+                        <p>Thank you for your payment.</p>
+                        <a href="/" class="btn btn-primary">Go to Home</a>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div th:replace="~{fragments::footer}"></div>
+<script th:src="@{/js/checkout.js}"></script>
+
+</body>
+</html>

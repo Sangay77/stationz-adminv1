@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+
+<head>
+    <title th:text="'Manage Categories | ' + ${pageTitle}">Manage Categories</title>
+</head>
+
+<body>
+<div layout:fragment="content">
+    <div class="container-fluid">
+
+        <!-- Page Header -->
+        <h2 class="text-center my-4">Manage Categories | <span th:text="${pageTitle}"></span></h2>
+
+        <form th:action="@{/categories/save}" method="post" enctype="multipart/form-data"
+              th:object="${category}" class="mx-auto" style="max-width: 700px;">
+            <input type="hidden" th:field="*{id}"/>
+
+            <div class="border border-secondary rounded p-4 shadow-sm bg-light">
+
+                <!-- Category Name -->
+                <div class="form-group row mb-3">
+                    <label class="col-sm-4 col-form-label">Category Name</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" th:field="*{name}" required minlength="3" maxlength="128"/>
+                    </div>
+                </div>
+
+                <!-- Alias -->
+                <div class="form-group row mb-3">
+                    <label class="col-sm-4 col-form-label">Alias</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" th:field="*{alias}" required minlength="2" maxlength="20"/>
+                    </div>
+                </div>
+
+                <!-- Image Upload -->
+                <div class="form-group row mb-4">
+                    <label class="col-sm-4 col-form-label">Image</label>
+                    <div class="col-sm-8 pt-2">
+                        <input type="hidden" th:field="*{image}"/>
+                        <input type="file" id="fileImage" name="fileImage" accept="image/png,image/jpeg"
+                               class="form-control mb-2" onchange="showImageThumbnail(this)"/>
+                        <img id="thumbnail" th:src="@{/images/image_thumbnail.png}" alt="Image Preview" class="img-thumbnail" style="max-height: 150px;"/>
+                    </div>
+                </div>
+
+                <!-- Enabled Checkbox -->
+                <div class="form-group row mb-4">
+                    <label class="col-sm-4 col-form-label">Enabled</label>
+                    <div class="col-sm-8 pt-2">
+                        <input type="checkbox" th:field="*{enabled}" class="form-check-input"/>
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                <div class="text-center">
+                    <input type="submit" value="Save" class="btn btn-primary me-2"/>
+                    <a th:href="@{/categories}" class="btn btn-secondary">Cancel</a>
+                </div>
+            </div>
+        </form>
+
+        <!-- Modal Dialog -->
+        <div class="modal fade" id="modalDialog" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal-title">Warning</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="modalBody" class="mb-0"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Scripts -->
+<div layout:fragment="scripts">
+    <!-- Your thumbnail JS -->
+    <script th:src="@{/js/showImageThumbnail.js}"></script>
+
+    <!-- Your inline scripts -->
+    <script type="text/javascript">
+        const moduleURL = "[[@{/categories}]]";
+    </script>
+</div>
+
+</body>
+</html>

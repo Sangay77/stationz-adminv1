@@ -1,0 +1,49 @@
+/* Product form specific styles */
+.section-header {
+    cursor: pointer;
+    padding: 10px 15px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.section-header:hover {
+    background-color: #e9ecef;
+}
+
+.section-header.collapsed .section-arrow {
+    transform: rotate(-90deg);
+}
+
+.section-arrow {
+    transition: transform 0.2s ease;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.section-content {
+    padding: 0 15px;
+    margin-bottom: 20px;
+}
+
+/* Rich Text Editor styles */
+.richText {
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+    margin-bottom: 1rem;
+}
+
+.richText .richText-toolbar {
+    background: #f8f9fa;
+    border-bottom: 1px solid #ced4da;
+}
+
+.richText-editor {
+    min-height: 200px;
+    padding: 10px;
+}
+
+/* Image preview */
+.image-preview-container {
+    margin-top: 10px;
+}

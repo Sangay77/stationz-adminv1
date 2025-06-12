@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security6">
+<head th:replace="~{fragments::page_head('Reset password Page')}"></head>
+
+<body>
+
+<div th:replace="~{fragments::navbar}"></div>
+
+<!-- Header Section -->
+<div class="container my-5">
+    <div class="text-center" th:if="${message!=null}">
+        <h3>[[${message}]]</h3>
+
+    </div>
+</div>
+
+
+
+<div th:replace="~{fragments::footer}"></div>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments::page_head('Checkout')}"></head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+
+<body>
+
+<!-- Navbar -->
+<div th:replace="~{fragments::navbar}"></div>
+
+<div id="paymentSuccessSection" class="d-none text-center mt-4">
+    <h2>🎉 Payment Completed Successfully!</h2>
+    <p>Thank you for your payment.</p>
+    <a href="/" class="btn btn-primary">Go to Home</a>
+</div>
+
+
+<!-- Footer -->
+<div th:replace="~{fragments::footer}"></div>
+<script th:src="@{/js/checkout.js}"></script>
+
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Station - Your One-Stop Service Hub</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                        url('/images/station-hero.jpg');
+            background-size: cover;
+            color: white;
+            padding: 100px 0;
+        }
+        .service-card {
+            transition: transform 0.3s;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        .brand-color {
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+<!-- Navigation Fragment -->
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<!-- Hero Section -->
+<section class="hero-section text-center">
+    <div class="container">
+        <h1 class="display-4 fw-bold mb-4">Welcome to Station</h1>
+        <p class="lead">Your premier one-stop hub for cleaning, dining, and automotive services in Western Australia</p>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h2 class="brand-color fw-bold mb-4">Our Story</h2>
+                <p class="lead">Founded in 2023, Station was born from a vision to create a comprehensive service ecosystem that caters to diverse needs under one brand.</p>
+                <p>What started as a single service venture has now grown into three thriving businesses across Busselton and Perth, each delivering exceptional quality in their respective fields.</p>
+            </div>
+            <div class="col-lg-6">
+                <img th:src="@{/images/about-story.jpg}" alt="Our team working together" class="img-fluid rounded shadow">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Mission Section -->
+<section class="py-5 bg-light">
+    <div class="container text-center">
+        <h2 class="brand-color fw-bold mb-5">Our Mission & Values</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="p-4 bg-white rounded shadow-sm">
+                    <i class="bi bi-stars fs-1 brand-color mb-3"></i>
+                    <h4>Quality</h4>
+                    <p>We never compromise on the quality of our services, products, or customer experience.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-4 bg-white rounded shadow-sm">
+                    <i class="bi bi-people fs-1 brand-color mb-3"></i>
+                    <h4>Community</h4>
+                    <p>We're committed to supporting and growing with the local communities we serve.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-4 bg-white rounded shadow-sm">
+                    <i class="bi bi-lightbulb fs-1 brand-color mb-3"></i>
+                    <h4>Innovation</h4>
+                    <p>We continuously evolve our services to meet changing customer needs.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center brand-color fw-bold mb-5">Our Services</h2>
+        <div class="row g-4">
+            <!-- EcoPure Card -->
+            <div class="col-md-4">
+                <div class="card service-card h-100">
+                    <img th:src="@{/images/ecopure-service.jpg}" class="card-img-top" alt="Commercial cleaning">
+                    <div class="card-body">
+                        <h5 class="card-title">EcoPure Cleaning Services</h5>
+                        <p class="card-text">Professional commercial cleaning with eco-friendly products for carpets, hard floors, and glass surfaces.</p>
+                        <a th:href="@{/services/cleaning}" class="btn btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Druk Station Card -->
+            <div class="col-md-4">
+                <div class="card service-card h-100">
+                    <img th:src="@{/images/druk-service.jpg}" class="card-img-top" alt="Restaurant and bar">
+                    <div class="card-body">
+                        <h5 class="card-title">Druk Station</h5>
+                        <p class="card-text">A vibrant restaurant and bar featuring authentic cuisine, craft cocktails, and premium karaoke entertainment.</p>
+                        <a th:href="@{/services/dining}" class="btn btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Workshop Card -->
+            <div class="col-md-4">
+                <div class="card service-card h-100">
+                    <img th:src="@{/images/workshop-service.jpg}" class="card-img-top" alt="Auto workshop">
+                    <div class="card-body">
+                        <h5 class="card-title">Station Automobile Workshop</h5>
+                        <p class="card-text">Comprehensive vehicle maintenance and repair services from certified mechanics using top-quality parts.</p>
+                        <a th:href="@{/services/automotive}" class="btn btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center brand-color fw-bold mb-5">Our Leadership Team</h2>
+        <div class="row g-4">
+            <div class="col-md-4 text-center">
+                <img th:src="@{/images/team-member1.jpg}" class="rounded-circle mb-3" width="150" alt="Founder">
+                <h4>Alex Johnson</h4>
+                <p class="text-muted">Founder & CEO</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <img th:src="@{/images/team-member2.jpg}" class="rounded-circle mb-3" width="150" alt="Operations Manager">
+                <h4>Sarah Williams</h4>
+                <p class="text-muted">Operations Director</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <img th:src="@{/images/team-member3.jpg}" class="rounded-circle mb-3" width="150" alt="Finance Manager">
+                <h4>Michael Chen</h4>
+                <p class="text-muted">Finance Director</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-5 text-white" style="background-color: #2c3e50;">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-4">Ready to Experience Station?</h2>
+        <p class="lead mb-4">Whether you need a sparkling clean office, a memorable dining experience, or reliable car service, we've got you covered.</p>
+        <a th:href="@{/contact}" class="btn btn-light btn-lg px-4 me-2">Contact Us</a>
+        <a th:href="@{/services}" class="btn btn-outline-light btn-lg px-4">Our Services</a>
+    </div>
+</section>
+
+<!-- Footer Fragment -->
+<div th:replace="fragments/footer :: footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SMTP Settings</title>
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/fontawesome/all.css}">
+</head>
+<body class="bg-light">
+
+<div th:fragment="content" class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-body p-4">
+                    <h4 class="text-center text-primary fw-bold mb-4">
+                        <i class="fas fa-envelope me-2"></i>SMTP Mail Server Settings
+                    </h4>
+
+                    <form th:action="@{/settings/save_mail_server}" method="post">
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">SMTP Server Host Name</label>
+                            <input type="text" class="form-control" name="MAIL_HOST" th:value="${MAIL_HOST}" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Mail Port</label>
+                            <input type="text" class="form-control" name="MAIL_PORT" th:value="${MAIL_PORT}" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Username</label>
+                            <input type="text" class="form-control" name="MAIL_USERNAME" th:value="${MAIL_USERNAME}" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Password</label>
+                            <input type="password" class="form-control" name="MAIL_PASSWORD" th:value="${MAIL_PASSWORD}" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Server Authentication Required</label>
+                            <select name="SMTP_AUTH" class="form-select">
+                                <option value="true" th:selected="(${SMTP_AUTH}=='true')">True</option>
+                                <option value="false" th:selected="(${SMTP_AUTH}=='false')">False</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">TLS Secured Connection Required</label>
+                            <select name="SMTP_SECURED" class="form-select">
+                                <option value="true" th:selected="(${SMTP_SECURED}=='true')">True</option>
+                                <option value="false" th:selected="(${SMTP_SECURED}=='false')">False</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">From E-mail Address</label>
+                            <input type="email" class="form-control" name="MAIL_FROM" th:value="${MAIL_FROM}" required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold">Sender Name</label>
+                            <input type="text" class="form-control" name="MAIL_SENDER_NAME" th:value="${MAIL_SENDER_NAME}" required>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary px-4">
+                                <i class="fas fa-save me-1"></i> Save Settings
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.min.js}"></script>
+<script th:src="@{/webjars/jquery/3.7.0/jquery.min.js}"></script>
+</body>
+</html>

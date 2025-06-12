@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments::page_head(${pageTitle})}">
+</head>
+
+<body class="bg-light">
+
+<!-- Navbar -->
+<div th:replace="~{fragments::navbar}"></div>
+
+<!-- Title -->
+<section class="py-4 text-center">
+    <div class="container">
+        <h2 class="display-6 fw-semibold">Account Settings</h2>
+    </div>
+</section>
+
+<!-- Form Section -->
+<div class="container mb-5">
+    <div class="mx-auto shadow rounded bg-white p-5" style="max-width: 800px;">
+        <form th:action="@{/update_account_details}" method="post" th:object="${customer}">
+            <input type="hidden" th:field="*{id}"/>
+
+            <!-- Success Message -->
+            <div th:if="${message!=null}" class="alert alert-success text-center">
+                [[${message}]]
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-md-6">
+                    <label class="form-label">Authentication Type</label>
+                    <input type="text" th:field="*{authenticationType}" class="form-control" readonly/>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Email</label>
+                    <input type="email" th:field="*{email}" class="form-control" readonly/>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">First Name</label>
+                    <input type="text" th:field="*{firstName}" class="form-control" required/>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Last Name</label>
+                    <input type="text" th:field="*{lastName}" class="form-control" required/>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Phone Number</label>
+                    <input type="text" th:field="*{phoneNumber}" class="form-control"/>
+                </div>
+
+                <th:block th:if="${customer.authenticationType.name() == 'DATABASE'}">
+                    <div class="col-md-6">
+                        <label class="form-label">Password</label>
+                        <input type="password" th:field="*{password}" id="password" class="form-control"
+                               oninput="checkPasswordMatch(document.getElementById('confirmPassword'))"/>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Confirm Password</label>
+                        <input type="password" id="confirmPassword" class="form-control"
+                               oninput="checkPasswordMatch(this)"/>
+                        <div id="passwordMismatchMsg" class="text-danger small mt-1" style="display: none;">
+                            Passwords do not match.
+                        </div>
+                    </div>
+                </th:block>
+
+                <div class="col-md-6">
+                    <label class="form-label">Address</label>
+                    <input type="text" th:field="*{address}" class="form-control"/>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">City</label>
+                    <input type="text" th:field="*{city}" class="form-control"/>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">State</label>
+                    <input type="text" th:field="*{state}" class="form-control"/>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Postal Code</label>
+                    <input type="text" th:field="*{postalCode}" class="form-control"/>
+                </div>
+            </div>
+
+            <!-- Form Buttons -->
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <a th:href="@{/}" class="btn btn-outline-secondary w-100">Cancel</a>
+                </div>
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-primary w-100">Update Account</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Footer -->
+<div th:replace="~{fragments::footer}"></div>
+
+<!-- Password Matching Script -->
+<script>
+    function checkPasswordMatch(confirmInput) {
+        const password = document.getElementById('password').value;
+        const confirmPassword = confirmInput.value;
+        const messageDiv = document.getElementById('passwordMismatchMsg');
+        messageDiv.style.display = password !== confirmPassword ? 'block' : 'none';
+    }
+</script>
+
+</body>
+</html>

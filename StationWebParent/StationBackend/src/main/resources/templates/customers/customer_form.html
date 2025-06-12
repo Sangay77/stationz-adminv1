@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+
+<body>
+<div layout:fragment="content">
+
+    <!-- Page Header -->
+    <h2 class="text-center mb-4">Manage Customer | [[${pageTitle}]]</h2>
+    <form th:action="@{/customers/save}" method="post" style="max-width: 700px; margin:0 auto"
+          enctype="multipart/form-data"
+          th:object="${customer}"
+          onsubmit="return checkEmailUnique(this);">
+        <input type="hidden" th:field="*{id}" id="id"/>
+        <div class="border border-secondary rounded p-4">
+
+            <!-- Email -->
+            <div class="form-group row mb-3">
+                <label class="col-sm-4 col-form-label">E-mail</label>
+                <div class="col-sm-8">
+                    <input type="email" class="form-control" th:field="*{email}" required minlength="8"
+                           maxlength="128" id="email"/>
+                </div>
+            </div>
+
+            <!-- First Name -->
+            <div class="form-group row mb-3">
+                <label class="col-sm-4 col-form-label">First Name</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" th:field="*{firstName}" required minlength="2"
+                           maxlength="128"/>
+                </div>
+            </div>
+
+            <!-- Last Name -->
+            <div class="form-group row mb-3">
+                <label class="col-sm-4 col-form-label">Last Name</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" th:field="*{lastName}" required minlength="2"
+                           maxlength="128"/>
+                </div>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group row mb-3">
+                <label class="col-sm-4 col-form-label">Password</label>
+                <div class="col-sm-8">
+                    <input th:if="${customer.id==null}" type="password" class="form-control" th:field="*{password}"
+                           required/>
+                    <input th:if="${customer.id!=null}" type="password" class="form-control" th:field="*{password}"/>
+                </div>
+            </div>
+
+            <!-- Enabled -->
+            <div class="form-group row mb-4">
+                <label class="col-sm-4 col-form-label">Enabled</label>
+                <div class="col-sm-8 pt-2">
+                    <input type="checkbox" th:field="*{enabled}">
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="text-center">
+                <input type="submit" value="Save" class="btn btn-primary me-2"/>
+                <a th:href="@{/customers}" class="btn btn-secondary">Cancel</a>
+            </div>
+        </div>
+    </form>
+
+    <!-- Modal -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalDialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-title">Warning</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <span id="modalBody"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Scripts fragment -->
+<div layout:fragment="scripts">
+
+    <script th:src="@{/js/showImageThumbnail.js}"></script>
+
+    <script type="text/javascript">
+
+        function checkEmailUnique(form) {
+            var url = "[[@{/customers/check_email}]]";
+            var customerEmail = $("#email").val();
+            var customerId = $("#id").val();
+            var csrf = $("input[name='_csrf']").val();
+
+            var params = {
+                id: customerId,
+                email: customerEmail,
+                _csrf: csrf
+            };
+
+            $.post(url, params, function(response) {
+                if (response === "OK") {
+                    form.submit(); // Proceed with form submission
+                } else if (response === "Duplicated") {
+                    // Fixed variable here to use customerEmail instead of userEmail
+                    showModalDialog("Warning", "There is another Customer having the email " + customerEmail);
+                } else {
+                    showModalDialog("Error", "Unknown response from server");
+                }
+            }).fail(function() {
+                showModalDialog("Error", "Could not connect to server");
+            });
+
+            return false; // Prevent default form submission
+        }
+
+        function showModalDialog(title, message) {
+            $("#modal-title").text(title);
+            $("#modalBody").text(message);
+            $("#modalDialog").modal("show");
+        }
+    </script>
+
+<!--    <script th:src="@{/js/common_form.js}"></script>-->
+
+</div>
+
+</body>
+</html>

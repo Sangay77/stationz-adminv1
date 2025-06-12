@@ -1,0 +1,69 @@
+<div th:fragment="content" class="container mt-4">
+    <div class="card shadow-sm rounded-4">
+        <div class="card-header bg-primary text-white fw-semibold">
+            Product Information
+        </div>
+        <div class="card-body">
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label fw-bold">Name:</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" th:field="*{name}" required minlength="3" placeholder="Enter product name" />
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label fw-bold">Alias:</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" th:field="*{alias}" placeholder="Auto-generated if empty" required minlength="3" />
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label fw-bold">Category:</label>
+                <div class="col-sm-9">
+                    <select th:field="*{category}" class="form-select" required>
+                        <option value="">-- Select Category --</option>
+                        <th:block th:each="category: ${listCategories}">
+                            <option th:value="${category.id}" th:text="${category.name}"></option>
+                        </th:block>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-3 col-form-label fw-bold">Enabled:</label>
+                <div class="col-sm-9">
+                    <div class="form-check form-switch">
+                        <input type="checkbox" class="form-check-input" th:field="*{enabled}" />
+                        <label class="form-check-label" th:for="enabled">Active</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-3 col-form-label fw-bold">In Stock:</label>
+                <div class="col-sm-9">
+                    <div class="form-check form-switch">
+                        <input type="checkbox" class="form-check-input" th:field="*{inStock}" />
+                        <label class="form-check-label" th:for="inStock">Available</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label fw-bold">Cost:</label>
+                <div class="col-sm-9">
+                    <input type="number" step="0.01" class="form-control" th:field="*{cost}" required placeholder="Enter cost value" />
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label fw-bold">Discount (%):</label>
+                <div class="col-sm-9">
+                    <input type="number" step="0.1" class="form-control" th:field="*{discountPercent}" required placeholder="e.g., 10.0" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,68 @@
+<section class="sidebar bg-dark text-light p-3 vh-100"
+         xmlns:th="http://www.thymeleaf.org"
+         xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<!-- Sidebar menu -->
+    <nav>
+        <ul class="nav flex-column" id="sidebarMenu">
+
+            <li class="nav-header text-uppercase small mb-3 text-muted">Main Navigation</li>
+
+            <li class="nav-item">
+                <a class="nav-link d-flex justify-content-between align-items-center text-light"
+                   data-bs-toggle="collapse" href="#optionsMenu" role="button"
+                   aria-expanded="true" aria-controls="optionsMenu">
+                    <span><i class="fas fa-th me-2"></i>Manage StationZ</span>
+                    <i class="fas fa-angle-down small"></i>
+                </a>
+                <div class="collapse show" id="optionsMenu" data-bs-parent="#sidebarMenu">
+                    <ul class="nav flex-column ms-2 mt-2 gap-1">
+
+                        <li class="nav-item" sec:authorize="hasAuthority('Admin')">
+                            <a class="nav-link text-light d-flex align-items-center py-2 px-3 rounded-2" th:href="@{/users}">
+                                <i class="fas fa-users me-2"></i> Users
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-light d-flex align-items-center py-2 px-3 rounded-2" th:href="@{/categories}">
+                                <i class="fas fa-tags me-2"></i> Categories
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-light d-flex align-items-center py-2 px-3 rounded-2" th:href="@{/products}">
+                                <i class="fas fa-box-open me-2"></i> Products
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-light d-flex align-items-center py-2 px-3 rounded-2" th:href="@{/customers}">
+                                <i class="fas fa-user-tie me-2"></i> Customers
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-light d-flex align-items-center py-2 px-3 rounded-2" th:href="@{/shipping}">
+                                <i class="fas fa-truck me-2"></i> Shipping
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-light d-flex align-items-center py-2 px-3 rounded-2" th:href="@{/articles}">
+                                <i class="fas fa-newspaper me-2"></i> Articles
+                            </a>
+                        </li>
+
+                        <li class="nav-item" sec:authorize="hasAuthority('Admin')">
+                            <a class="nav-link text-light d-flex align-items-center py-2 px-3 rounded-2" th:href="@{/settings}">
+                                <i class="fas fa-cog me-2"></i> Settings
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</section>

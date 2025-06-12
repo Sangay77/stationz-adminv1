@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>General Settings</title>
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/fontawesome/all.css}">
+</head>
+<body>
+
+<div th:fragment="content" class="container my-5">
+    <form th:action="@{/settings/save_general}" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+        <div class="card shadow-sm rounded-4 p-4">
+            <h4 class="mb-4 border-bottom pb-2">General Settings</h4>
+
+            <!-- Site Name -->
+            <div class="mb-3">
+                <label for="siteName" class="form-label fw-semibold">Site Name</label>
+                <input type="text" id="siteName" name="SITE_NAME" class="form-control form-control-lg" th:value="${SITE_NAME}" required>
+            </div>
+
+            <!-- Copyright -->
+            <div class="mb-3">
+                <label for="copyright" class="form-label fw-semibold">Copyright</label>
+                <input type="text" id="copyright" name="COPYRIGHT" class="form-control form-control-lg" th:value="${COPYRIGHT}" required>
+            </div>
+
+            <!-- Site Logo -->
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Site Logo</label>
+                <div class="d-flex align-items-center gap-3">
+                    <img id="thumbnail" alt="Site Logo" th:src="@{${SITE_LOGO}}" class="img-thumbnail" style="width: 120px; height: auto;">
+                    <input type="file" id="fileImage" name="fileImage" accept="image/png,image/jpeg" class="form-control">
+                </div>
+            </div>
+
+            <!-- Currency Type -->
+            <div class="mb-4">
+                <label for="currencyType" class="form-label fw-semibold">Currency Type</label>
+                <select id="currencyType" name="CURRENCY_ID" class="form-select form-select-lg" required>
+                    <option value="" disabled th:if="${CURRENCY_ID == null}" selected>Select a currency</option>
+                    <option th:each="currency : ${listCurrencies}"
+                            th:value="${currency.id}"
+                            th:text="${currency.name}"
+                            th:selected="${currency.id} == ${CURRENCY_ID}">
+                    </option>
+                </select>
+            </div>
+
+            <!-- Save Button -->
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary px-5 py-2 fs-5 rounded-pill shadow">Save Settings</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/webjars/jquery/3.7.0/jquery.min.js}"></script>
+</body>
+</html>

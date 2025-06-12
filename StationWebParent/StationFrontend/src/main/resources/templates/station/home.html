@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments::page_head('Home - Station')}">
+    <meta name="description" content="Station - Your one-stop hub for commercial cleaning, dining entertainment, and automotive services in Busselton and Perth">
+</head>
+
+<body>
+<!-- Navigation -->
+<div th:replace="~{fragments::navbar}"></div>
+
+<!-- Alert Message -->
+<div th:if="${message}" th:class="'alert ' + ${alertClass}" role="alert">
+    <span th:text="${message}"></span>
+</div>
+
+<!-- About Section -->
+<section class="py-5 bg-light">
+    <div class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <img th:src="@{/images/about.jpeg}" alt="Station headquarters" class="img-fluid rounded shadow">
+            </div>
+            <div class="col-lg-6">
+                <h2 class="fw-bold mb-4">About Station</h2>
+                <p class="lead">Three specialized services. One trusted brand.</p>
+                <p>Founded in 2023, Station has quickly become a recognized name across multiple service industries in Western Australia. Our unique multi-service approach allows us to serve diverse customer needs while maintaining exceptional quality standards.</p>
+                <div class="row mt-4">
+                    <div class="col-md-6 mb-3">
+                        <div class="d-flex">
+                            <div class="me-3 text-primary"><i class="bi bi-check-circle-fill fs-4"></i></div>
+                            <div><h5 class="fw-bold">Professional</h5><p class="mb-0">Certified experts in every division</p></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="d-flex">
+                            <div class="me-3 text-primary"><i class="bi bi-check-circle-fill fs-4"></i></div>
+                            <div><h5 class="fw-bold">Reliable</h5><p class="mb-0">Consistent quality you can trust</p></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="d-flex">
+                            <div class="me-3 text-primary"><i class="bi bi-check-circle-fill fs-4"></i></div>
+                            <div><h5 class="fw-bold">Innovative</h5><p class="mb-0">Modern solutions for modern needs</p></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="d-flex">
+                            <div class="me-3 text-primary"><i class="bi bi-check-circle-fill fs-4"></i></div>
+                            <div><h5 class="fw-bold">Local</h5><p class="mb-0">Proudly serving WA communities</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="py-5">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Our Services</h2>
+            <p class="lead">Three specialized divisions delivering excellence</p>
+        </div>
+        <div class="row g-4">
+            <!-- EcoPure -->
+            <div class="col-lg-4">
+                <div class="card service-card h-100 border-0 shadow-sm">
+                    <div class="card-img-top bg-primary bg-opacity-10 text-center p-4"><i class="bi bi-bucket-fill text-primary fs-1"></i></div>
+                    <div class="card-body">
+                        <h3 class="card-title h4">EcoPure Cleaning Services</h3>
+                        <p>Commercial cleaning with eco-friendly practices.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i> Carpet & floor care</li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i> Glass cleaning</li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i> Eco-certified supplies</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer bg-transparent border-0"><a href="/services/cleaning" class="btn btn-outline-primary">Learn More</a></div>
+                </div>
+            </div>
+            <!-- Druk Station -->
+            <div class="col-lg-4">
+                <div class="card service-card h-100 border-0 shadow-sm">
+                    <div class="card-img-top bg-danger bg-opacity-10 text-center p-4"><i class="bi bi-cup-hot-fill text-danger fs-1"></i></div>
+                    <div class="card-body">
+                        <h3 class="card-title h4">Druk Station</h3>
+                        <p>Dining & entertainment with karaoke and events.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="bi bi-check-circle-fill text-danger me-2"></i> Restaurant & bar</li>
+                            <li><i class="bi bi-check-circle-fill text-danger me-2"></i> Karaoke suites</li>
+                            <li><i class="bi bi-check-circle-fill text-danger me-2"></i> Event hosting</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer bg-transparent border-0"><a href="/services/dining" class="btn btn-outline-danger">Learn More</a></div>
+                </div>
+            </div>
+            <!-- Workshop -->
+            <div class="col-lg-4">
+                <div class="card service-card h-100 border-0 shadow-sm">
+                    <div class="card-img-top bg-success bg-opacity-10 text-center p-4"><i class="bi bi-tools text-success fs-1"></i></div>
+                    <div class="card-body">
+                        <h3 class="card-title h4">Station Workshop</h3>
+                        <p>Auto services from licensed mechanics.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="bi bi-check-circle-fill text-success me-2"></i> Repairs & diagnostics</li>
+                            <li><i class="bi bi-check-circle-fill text-success me-2"></i> Maintenance</li>
+                            <li><i class="bi bi-check-circle-fill text-success me-2"></i> Fleet service</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer bg-transparent border-0"><a href="/services/automotive" class="btn btn-outline-success">Learn More</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="py-5 bg-dark text-white">
+    <div class="container py-4">
+        <div class="row text-center g-4">
+            <div class="col-md-4"><h3 class="display-4 fw-bold">2</h3><p class="mb-0 fw-bold">Locations</p><p class="text-muted">Busselton & Perth</p></div>
+            <div class="col-md-4"><h3 class="display-4 fw-bold">3</h3><p class="mb-0 fw-bold">Divisions</p><p class="text-muted">One trusted brand</p></div>
+            <div class="col-md-4"><h3 class="display-4 fw-bold">50+</h3><p class="mb-0 fw-bold">Team Members</p><p class="text-muted">Across services</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="py-5 bg-light">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">What Our Clients Say</h2>
+            <p class="lead">Trusted by businesses and individuals across WA</p>
+        </div>
+        <div class="row g-4">
+            <!-- Testimonial 1 -->
+            <div class="col-lg-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <div class="mb-3 text-warning">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                        <p>"EcoPure has transformed our office environment. Their green cleaning makes a difference."</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-top">
+                        <div class="d-flex align-items-center">
+                            <img th:src="@{/images/noko.jpg}" class="rounded-circle me-3" width="50" alt="Client">
+                            <div><h6 class="mb-0 fw-bold">Sarah Johnson</h6><small class="text-muted">Office Manager</small></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Testimonial 2 -->
+            <div class="col-lg-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <div class="mb-3 text-warning">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                        <p>"Druk Station is our go-to for team parties. The karaoke is a blast!"</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-top">
+                        <div class="d-flex align-items-center">
+                            <img th:src="@{/images/noko.jpg}" class="rounded-circle me-3" width="50" alt="Client">
+                            <div><h6 class="mb-0 fw-bold">Michael Chen</h6><small class="text-muted">Customer</small></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Testimonial 3 -->
+            <div class="col-lg-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <div class="mb-3 text-warning">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                        <p>"The Workshop keeps our vehicles in top shape. Great service every time."</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-top">
+                        <div class="d-flex align-items-center">
+                            <img th:src="@{/images/noko.jpg}" class="rounded-circle me-3" width="50" alt="Client">
+                            <div><h6 class="mb-0 fw-bold">Raj Patel</h6><small class="text-muted">Fleet Manager</small></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-5 bg-primary text-white">
+    <div class="container text-center py-4">
+        <h2 class="fw-bold mb-3">Get in Touch</h2>
+        <p class="lead mb-4">Have a question or need service details? We're here to help.</p>
+        <a href="/contact" class="btn btn-outline-light btn-lg">Contact Us</a>
+    </div>
+</section>
+
+<!-- Footer -->
+<div th:replace="~{fragments::footer}"></div>
+</body>
+</html>

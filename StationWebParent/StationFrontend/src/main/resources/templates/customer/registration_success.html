@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security6">
+
+<head th:replace="~{fragments::page_head(${pageTitle})}"></head>
+
+<body>
+
+<div th:replace="~{fragments::navbar}"></div>
+
+<div style="margin-top: 40px;"></div>
+
+<div class="text-center">
+    <h1>Customer Registration</h1>
+    <h4>You have registered successfully</h4>
+    <p>Please check your email to verify your account.</p>
+    <p><a th:href="@{/login}">Login here</a></p>
+</div>
+
+<div th:replace="~{fragments::footer}"></div>
+
+</body>
+</html>
