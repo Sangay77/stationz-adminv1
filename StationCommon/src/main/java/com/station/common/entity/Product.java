@@ -63,6 +63,9 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
 
+    private int reviewCount;
+    private float averageRating;
+
     @Transient
     public String getMainImagePath() {
         if (mainImage == null || mainImage.isEmpty()) return "/images/default-user.png";
@@ -89,5 +92,10 @@ public class Product {
 
     public void addDetail(String name, String value) {
         this.details.add(new ProductDetail(name, value, this));
+    }
+
+    @Transient
+    public String getURI() {
+        return "/p/" + this.alias + "/";
     }
 }

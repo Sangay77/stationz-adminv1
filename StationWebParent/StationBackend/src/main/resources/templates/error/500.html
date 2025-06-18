@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security6">
-<div th:replace="~{fragments::page_head(${pageTitle}, 'none')}"></div>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security6"
+      layout:decorate="~{layout}">
 
 <body>
-
-<div class="container-fluid">
-    <div th:replace="~{navigation:: navbar}">
-    </div>
+<div layout:fragment="content">
 
     <div class="m-3">
         <h2>Sorry, the server has encountered the error while processing the request</h2>
     </div>
 
-    <div th:replace="~{fragments::footer}"></div>
+</div>
 
+<div layout:fragment="scripts">
 
 </div>
 

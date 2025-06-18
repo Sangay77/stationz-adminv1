@@ -33,7 +33,7 @@ logging:
         security: DEBUG
 
 server:
-  port: 8086
+  port: 8080
 
 # Custom RMA-related configuration
 address:

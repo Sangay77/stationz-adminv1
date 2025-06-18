@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Reviews</title>
+</head>
+<body>
+
+<div th:fragment="content" class="container mt-4" id="topReviews">
+
+    <!-- Section Title -->
+    <div class="row">
+        <div class="col">
+            <hr/>
+            <h3 class="text-center">Customer Reviews</h3>
+            <hr/>
+        </div>
+    </div>
+
+    <!-- Check if there are any reviews -->
+    <div th:if="${product.reviewCount > 0}">
+
+        <!-- Rating Summary -->
+        <div class="row mb-3">
+            <div class="col d-flex justify-content-center align-items-center gap-2">
+                <input id="productRating" type="text"
+                       class="kv-ltr-theme-svg-star rating-loading"
+                       th:value="${product.averageRating}"
+                       data-size="md"
+                       data-readonly="true"
+                       data-theme="krajee-svg"
+                       data-show-clear="false"
+                       data-show-caption="false" />
+                <span id="ratingNumber" class="fw-bold">[[${product.averageRating}]]</span>
+                <span>of 5</span>
+            </div>
+        </div>
+
+        <!-- Link to View All -->
+        <div class="row mb-3">
+            <div class="col text-center">
+                <a th:href="@{'/ratings/'+${product.alias}}" class="text-decoration-none">View all [[${product.reviewCount}]] ratings</a>
+            </div>
+        </div>
+
+        <!-- Individual Reviews -->
+        <div th:each="review : ${reviews}" class="row mb-4 border-bottom pb-3">
+            <div class="col-12">
+                <div class="mb-2">
+                    <input type="text"
+                           class="kv-ltr-theme-svg-star rating-loading"
+                           dir="ltr"
+                           data-size="xs"
+                           th:value="${product.averageRating}" />
+                </div>
+
+                <h5 class="fw-semibold">[[${review.headline}]]</h5>
+                <p class="mb-1">[[${review.comment}]]</p>
+                <div class="text-muted small">by [[${review.customer.fullName}]]</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

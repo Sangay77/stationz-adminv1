@@ -58,4 +58,18 @@ class ProductRepositoryTest {
 
     }
 
+    @Test
+    public void updateReviewCount(){
+        Integer productId=1;
+        Product product = productRepository.findById(productId).get();
+        productRepository.updateReviewCount(productId);
+    }
+
+    @Test
+    public void updateAverageReview(){
+        Integer productId=1;
+        Product product = productRepository.findById(productId).get();
+        productRepository.updateAverageRating(productId);
+    }
+
 }

@@ -16,9 +16,13 @@
 
     <script th:src="@{/js/common.js}"></script>
 
+
+    <link rel="stylesheet" th:if="${showRating}" th:href="@{/star-rating/css/star-rating.css}" />
+    <script th:if="${showRating}" th:src="@{/star-rating/js/star-rating.js}"></script>
+    <link rel="stylesheet" th:if="${showRating}" th:href="@{/star-rating/themes/krajee-svg/theme.css}" />
+    <script th:if="${showRating}" th:src="@{/star-rating/themes/krajee-svg/theme.js}"></script>
+
 </head>
-
-
 <body>
 
 <div th:fragment="navbar">

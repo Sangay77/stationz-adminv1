@@ -3,12 +3,15 @@ package com.station.common.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import java.util.Date;
 
 @Entity
 @Table(name = "customer")
 @Data
+@NoArgsConstructor
 public class Customer {
 
     @Id
@@ -39,11 +42,14 @@ public class Customer {
     @Column(name = "authentication_type")
     private AuthenticationType authenticationType;
 
-    @Column(name = "reset_password_token",length = 30, nullable = true)
+    @Column(name = "reset_password_token", length = 30, nullable = true)
     private String resetPasswordToken;
 
     public String getFullName() {
         return firstName + " " + lastName;
     }
 
+    public Customer(Integer id) {
+        this.id = id;
+    }
 }

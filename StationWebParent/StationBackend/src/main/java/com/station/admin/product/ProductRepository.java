@@ -20,4 +20,14 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Query("UPDATE Product p SET p.enabled=?2 WHERE p.id=?1")
     @Modifying
     void updateEnabledStatus(Integer id, boolean enabled);
+
+    @Modifying
+    @Query("UPDATE Product p SET p.reviewCount = COALESCE((SELECT COUNT(r.id) FROM Review r WHERE r.product.id = ?1), 0) WHERE p.id = ?1")
+    void updateReviewCount(Integer productId);
+
+    @Modifying
+    @Query("UPDATE Product p SET p.averageRating = COALESCE((SELECT AVG(r.rating) FROM Review r WHERE r.product.id = ?1), 0) WHERE p.id = ?1")
+    void updateAverageRating(Integer productId);
+
+
 }

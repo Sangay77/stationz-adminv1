@@ -3,8 +3,10 @@ package com.station.product;
 import com.station.category.CategoryService;
 import com.station.common.entity.Category;
 import com.station.common.entity.Product;
+import com.station.common.entity.Review;
 import com.station.common.exception.CategoryNotFoundException;
 import com.station.common.exception.ProductNotFoundException;
+import com.station.review.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,8 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired private ReviewService reviewService;
 
 
     @GetMapping("/c/{category_alias}")
@@ -47,7 +51,7 @@ public class ProductController {
         model.addAttribute("pageTitle", category.getName());
         model.addAttribute("listProducts", page);
         model.addAttribute("category", category);
-
+        model.addAttribute("showRating", true);
         return "product/products_by_category";
     }
 
@@ -57,10 +61,12 @@ public class ProductController {
         try {
             Product product = productService.getProduct(alias);
             Category category = product.getCategory();
+            Page<Review> reviews = reviewService.list3MostRecentReviewsByProduct(product);
             model.addAttribute("category", category);
             model.addAttribute("product", product);
             model.addAttribute("pageTitle",product.getName());
-
+            model.addAttribute("showRating", true);
+            model.addAttribute("reviews", reviews);
             return "product/product_details";
 
         } catch (ProductNotFoundException ex) {

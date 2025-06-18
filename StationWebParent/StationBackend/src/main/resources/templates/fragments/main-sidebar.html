@@ -2,7 +2,6 @@
          xmlns:th="http://www.thymeleaf.org"
          xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<!-- Sidebar menu -->
     <nav>
         <ul class="nav flex-column" id="sidebarMenu">
 
@@ -31,10 +30,33 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-light d-flex align-items-center py-2 px-3 rounded-2" th:href="@{/products}">
+                            <a class="nav-link text-light d-flex align-items-center py-2 px-3 rounded-2"
+                               data-bs-toggle="collapse" href="#productsSubMenu" role="button"
+                               aria-expanded="false" aria-controls="productsSubMenu">
                                 <i class="fas fa-box-open me-2"></i> Products
+                                <i class="fas fa-angle-down ms-auto small"></i>
                             </a>
+
+                            <!-- Submenu for Products -->
+                            <div class="collapse" id="productsSubMenu">
+                                <ul class="nav flex-column ms-3 mt-1">
+
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light py-1 px-3 rounded-2" th:href="@{/products}">
+                                            <i class="fas fa-list me-2"></i> All Products
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light py-1 px-3 rounded-2" th:href="@{/reviews}">
+                                            <i class="fas fa-star me-2"></i>Product Reviews
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
                         </li>
+
 
                         <li class="nav-item">
                             <a class="nav-link text-light d-flex align-items-center py-2 px-3 rounded-2" th:href="@{/customers}">

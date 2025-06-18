@@ -48,7 +48,6 @@ public class ProductService {
         }
 
         if (product.getId() != null) {
-            // Update logic
             Product existingProduct = productRepository.findById(product.getId())
                     .orElseThrow(() -> new ProductNotFoundException("Product not found with id: " + product.getId()));
 
@@ -69,7 +68,10 @@ public class ProductService {
                 existingProduct.setImages(product.getImages());
             }
 
-            return productRepository.save(existingProduct);
+            Product updatedProduct = productRepository.save(existingProduct);
+            productRepository.updateReviewCount(product.getId());
+            productRepository.updateAverageRating(product.getId());
+            return updatedProduct;
         } else {
             // New Product creation
             return productRepository.save(product);
