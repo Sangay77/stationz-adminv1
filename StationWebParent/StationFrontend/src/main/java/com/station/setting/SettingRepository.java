@@ -4,9 +4,11 @@ import com.station.common.entity.Setting;
 import com.station.common.entity.SettingCategory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface SettingRepository extends JpaRepository<Setting, String> {
 
     List<Setting> findByCategory(SettingCategory category);

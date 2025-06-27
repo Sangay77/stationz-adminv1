@@ -6,6 +6,8 @@ import com.station.customer.CustomerService;
 import com.station.utility.Utility;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -91,5 +93,18 @@ public class ShoppingCartRestController {
 
         return response;
     }
+
+    @PostMapping("/cart/remove-after-payment")
+    @ResponseBody
+    public ResponseEntity<?> removeCartAfterPayment(HttpServletRequest request) {
+        try {
+            Customer customer = getAuthenticatedCustomer(request);
+            shoppingCartService.removeCartItems(customer);
+            return ResponseEntity.ok().body("Cart cleared");
+        } catch (CustomerNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Customer not found");
+        }
+    }
+
 
 }

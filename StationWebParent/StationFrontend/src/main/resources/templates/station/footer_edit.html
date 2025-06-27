@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{_layout}">
+
+<body>
+<div layout:fragment="content" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="mb-4">Manage Footer Content</h2>
+
+        <!-- Optional success message -->
+        <div th:if="${param.success}" class="alert alert-success" role="alert">
+            Footer content updated successfully!
+        </div>
+
+        <form th:action="@{/admin/footer/save}" method="post" th:object="${footerInfo}">
+            <div class="mb-4">
+                <label class="form-label fw-semibold">About Section</label>
+                <textarea th:field="*{about}" class="form-control" rows="4" placeholder="Write about Station..."></textarea>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-semibold">Location</label>
+                    <input type="text" th:field="*{location}" class="form-control" placeholder="e.g., Busselton & Perth, WA"/>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-semibold">Phone</label>
+                    <input type="text" th:field="*{phone}" class="form-control" placeholder="+61 8 1234 5678"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-semibold">Email</label>
+                    <input type="email" th:field="*{email}" class="form-control" placeholder="your@email.com"/>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-semibold">Facebook URL</label>
+                    <input type="url" th:field="*{facebookUrl}" class="form-control" placeholder="https://facebook.com/..."/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-semibold">Instagram URL</label>
+                    <input type="url" th:field="*{instagramUrl}" class="form-control" placeholder="https://instagram.com/..."/>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-semibold">Twitter URL</label>
+                    <input type="url" th:field="*{twitterUrl}" class="form-control" placeholder="https://twitter.com/..."/>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary px-4">Save Changes</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

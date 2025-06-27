@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security6">
-<head th:replace="~{fragments::page_head('Shopping Cart')}"></head>
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{_layout}">
 
-<body class="bg-light text-dark">
+<body>
 
-<!-- Navbar -->
-<div th:replace="~{fragments::navbar}"></div>
-
+<div layout:fragment="content">
 <!-- Title -->
 <div class="container py-4">
     <div class="text-center mb-4">
@@ -86,7 +84,7 @@
                 <img src="/images/empty_cart.svg" alt="Empty Cart" class="img-fluid mb-4" style="max-width: 280px;">
                 <h4 class="fw-semibold text-muted">Your cart is currently empty</h4>
                 <p class="text-secondary">Browse products and add them to your cart to continue.</p>
-                <a th:href="@{/}" class="btn btn-outline-primary mt-3">
+                <a th:href="@{/products}" class="btn btn-outline-primary mt-3">
                     <i class="fas fa-arrow-left me-2"></i>Continue Shopping
                 </a>
             </div>
@@ -96,7 +94,6 @@
 
 <!-- Footer -->
 <div th:replace="~{fragments::modal_dialog}"></div>
-<div th:replace="~{fragments::footer}"></div>
 
 <script type="text/javascript">
 
@@ -106,6 +103,6 @@
 </script>
 <script type="text/javascript" th:src="@{/js/quantity_control.js}"></script>
 <script type="text/javascript" th:src="@{/js/shopping_cart.js}"></script>
-
+</div>
 </body>
 </html>

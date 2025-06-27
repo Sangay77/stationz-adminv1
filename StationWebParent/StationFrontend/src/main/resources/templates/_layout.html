@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security6">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>[[${SITE_NAME}]]</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/fontawesome/all.css}">
+
+    <!-- JS -->
+    <script th:src="@{/webjars/jquery/3.7.0/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/js/common.js}"></script>
+
+    <!-- Optional Rating -->
+    <link rel="stylesheet" th:if="${showRating}" th:href="@{/star-rating/css/star-rating.css}" />
+    <script th:if="${showRating}" th:src="@{/star-rating/js/star-rating.js}"></script>
+    <link rel="stylesheet" th:if="${showRating}" th:href="@{/star-rating/themes/krajee-svg/theme.css}" />
+    <script th:if="${showRating}" th:src="@{/star-rating/themes/krajee-svg/theme.js}"></script>
+</head>
+
+<body class="d-flex flex-column min-vh-100 bg-light">
+
+<!-- Header / Navbar -->
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
+        <div class="container-fluid">
+            <!-- Brand -->
+            <a class="navbar-brand d-flex align-items-center" th:href="@{/}">
+<!--                <img th:src="@{${SITE_LOGO}}" alt="Logo" style="height: 40px;" class="me-2">-->
+                <img th:src="@{${SITE_LOGO}}"
+                     alt="Logo"
+                     style="height: 45px; width: 45px; object-fit: cover;"
+                     class="me-2 rounded-circle border border-light shadow-sm">
+
+
+            </a>
+
+            <!-- Toggler -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                    aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar Content -->
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <!-- Left Navigation -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- EcoPure Dropdown -->
+                    <li class="nav-item dropdown" sec:authorize="!isAuthenticated()">
+                        <a class="nav-link dropdown-toggle" href="#" id="ecoPureDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-tint me-1"></i> STATION CLEANING GROUP
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="ecoPureDropdown">
+                            <li><a class="dropdown-item" th:href="@{/commercial}"><i class="fas fa-rug me-2"></i>COMMERCIAL CLEANING</a></li>
+                            <li><a class="dropdown-item" th:href="@{/residential}"><i class="fas fa-window-maximize me-2"></i>DOMESTIC/RESIDENTIAL CLEANING</a></li>
+                            <li><a class="dropdown-item" th:href="@{/office}"><i class="fas fa-window-maximize me-2"></i>OFFICE CLEANING</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Druk Station -->
+                    <li class="nav-item dropdown" sec:authorize="!isAuthenticated()">
+                        <a class="nav-link dropdown-toggle" href="#" id="drukDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-mug-hot me-1"></i> Druk STATION
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="drukDropdown">
+                            <li><a class="dropdown-item" th:href="@{/restaurant/menu}"><i class="fas fa-bars me-2"></i>Menu</a></li>
+                            <li><a class="dropdown-item" th:href="@{/restaurant/bar}"><i class="fas fa-cocktail me-2"></i>Bar</a></li>
+                            <li><a class="dropdown-item" th:href="@{/restaurant/karaoke}"><i class="fas fa-microphone me-2"></i>Karaoke</a></li>
+                            <li><a class="dropdown-item" th:href="@{/restaurant/events}"><i class="fas fa-calendar-alt me-2"></i>Events</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Workshop -->
+                    <li class="nav-item dropdown" sec:authorize="!isAuthenticated()">
+                        <a class="nav-link dropdown-toggle" href="#" id="workshopDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-tools me-1"></i> STATION AUTOMOBILE
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="workshopDropdown">
+                            <li><a class="dropdown-item" th:href="@{/workshop/repairs}"><i class="fas fa-wrench me-2"></i>Car Repairs</a></li>
+                            <li><a class="dropdown-item" th:href="@{/workshop/maintenance}"><i class="fas fa-cogs me-2"></i>Maintenance</a></li>
+                            <li><a class="dropdown-item" th:href="@{/workshop/fleet}"><i class="fas fa-truck me-2"></i>Fleet Services</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/about_us}"><i class="fas fa-info-circle me-1"></i> About Us</a>
+                    </li>
+
+
+                    <!-- Authenticated Only -->
+                    <li class="nav-item" sec:authorize="isAuthenticated()">
+                        <a class="nav-link" th:href="@{/products}"><i class="fas fa-box me-1"></i> Products</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="isAuthenticated()">
+                        <a class="nav-link" th:href="@{/orders}"><i class="fas fa-list me-1"></i> Orders</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="isAuthenticated()">
+                        <a class="nav-link position-relative" th:href="@{/cart}">
+                            <i class="fas fa-shopping-cart me-1"></i> Cart
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" th:text="${cartCount}">0</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Right Side -->
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <!-- Search -->
+                    <li class="nav-item">
+                        <form class="d-flex" role="search" th:action="@{/search}" method="get">
+                            <input class="form-control me-2" type="search" name="keyword" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-primary" type="submit">Go</button>
+                        </form>
+                    </li>
+
+                    <!-- Login -->
+                    <li class="nav-item ms-3" sec:authorize="!isAuthenticated()">
+                        <a class="nav-link" th:href="@{/login}">
+                            <i class="fas fa-sign-in-alt me-1"></i> Login
+                        </a>
+                    </li>
+
+                    <!-- Profile Dropdown -->
+                    <li class="nav-item dropdown ms-3" sec:authorize="isAuthenticated()">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user-circle me-1"></i> <span th:text="${#authentication.name}">User</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <a class="dropdown-item" th:href="@{/account_details}">
+                                    <i class="fas fa-cog me-2"></i> Account Settings
+                                </a>
+                            </li>
+                            <li>
+                                <form th:action="@{/logout}" method="post" class="m-0">
+                                    <button type="submit" class="dropdown-item">
+                                        <i class="fas fa-sign-out-alt me-2"></i> Logout
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Main Content -->
+<main class="flex-fill container py-4" layout:fragment="content">
+    <!-- Default dynamic content goes here -->
+</main>
+
+<!-- Footer -->
+<footer class="bg-dark text-light mt-auto pt-5 pb-4">
+    <div class="container">
+        <div class="row gy-4">
+
+            <!-- About Station -->
+            <div class="col-12 col-md-4">
+                <h6 class="text-uppercase">About Station</h6>
+<!--                <p class="small mb-0" th:text="${footerInfo.about}"></p>-->
+            </div>
+
+            <!-- Services -->
+            <div class="col-6 col-md-4">
+                <h6 class="text-uppercase">Our Services</h6>
+                <ul class="list-unstyled small mb-0">
+                    <li><a th:href="@{/ecopure}" class="text-light text-decoration-none">STATION CLEANING GROUP</a></li>
+                    <li><a th:href="@{/druk-station}" class="text-light text-decoration-none">DRUK STATION</a></li>
+                    <li><a th:href="@{/workshop}" class="text-light text-decoration-none">STATION AUTOMOBILE WORKSHOP</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact & Location -->
+            <div class="col-6 col-md-4">
+                <h6 class="text-uppercase">Contact & Location</h6>
+                <ul class="list-unstyled small mb-0">
+                    <li>Locations: Busselton & Perth, WA</li>
+                    <li><a th:href="@{/contact}" class="text-light text-decoration-none">Contact Us</a></li>
+                    <li><a href="mailto:stationz2025@gmail.com" class="text-light text-decoration-none">stationz2025@gmail.com</a></li>
+                    <li><a href="tel:+61812345678" class="text-light text-decoration-none">0412207114</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <hr class="border-secondary my-4">
+
+        <div class="row">
+            <div class="col d-flex justify-content-between align-items-center flex-wrap">
+                <small class="text-muted">&copy; [[${currentYear}]] STATIONZ GROUP — All rights reserved.</small>
+
+                <div class="d-flex gap-3">
+                    <a th:href="@{/privacy}" class="text-light text-decoration-underline small">Privacy</a>
+                    <a th:href="@{/terms}" class="text-light text-decoration-underline small">Terms</a>
+                    <a href="#" class="text-light" aria-label="Facebook"><i class="fab fa-facebook fa-lg"></i></a>
+                    <a href="#" class="text-light" aria-label="Instagram"><i class="fab fa-instagram fa-lg"></i></a>
+                    <a href="#" class="text-light" aria-label="Twitter"><i class="fab fa-twitter fa-lg"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!--<footer class="bg-dark text-light mt-auto pt-5 pb-4">-->
+<!--    <div class="container">-->
+<!--        <div class="row gy-4">-->
+
+<!--            &lt;!&ndash; About Station &ndash;&gt;-->
+<!--            <div class="col-12 col-md-4">-->
+<!--                <h6 class="text-uppercase">About Station</h6>-->
+<!--                <p class="small mb-0" th:text="${footerInfo.about}">Loading about info...</p>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Services &ndash;&gt;-->
+<!--            <div class="col-6 col-md-4">-->
+<!--                <h6 class="text-uppercase">Our Services</h6>-->
+<!--                <ul class="list-unstyled small mb-0">-->
+<!--                    <li><a th:href="@{/ecopure}" class="text-light text-decoration-none">STATION CLEANING GROUP</a></li>-->
+<!--                    <li><a th:href="@{/druk-station}" class="text-light text-decoration-none">DRUK STATION</a></li>-->
+<!--                    <li><a th:href="@{/workshop}" class="text-light text-decoration-none">STATION AUTOMOBILE WORKSHOP</a></li>-->
+<!--                </ul>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Contact & Location &ndash;&gt;-->
+<!--            <div class="col-6 col-md-4">-->
+<!--                <h6 class="text-uppercase">Contact & Location</h6>-->
+<!--                <ul class="list-unstyled small mb-0">-->
+<!--                    <li th:text="'Location: ' + ${footerInfo.location}">Location info</li>-->
+<!--                    <li><a th:href="@{/contact}" class="text-light text-decoration-none">Contact Us</a></li>-->
+<!--                    <li>-->
+<!--                        <a th:href="'mailto:' + ${footerInfo.email}"-->
+<!--                           th:text="${footerInfo.email}"-->
+<!--                           class="text-light text-decoration-none">Email</a>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a th:href="'tel:' + ${footerInfo.phone}"-->
+<!--                           th:text="${footerInfo.phone}"-->
+<!--                           class="text-light text-decoration-none">Phone</a>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        <hr class="border-secondary my-4">-->
+
+<!--        <div class="row">-->
+<!--            <div class="col d-flex justify-content-between align-items-center flex-wrap">-->
+<!--                <small class="text-muted" th:text="${footerInfo.copyright}">-->
+<!--                    &copy; [[${currentYear}]] STATIONZ GROUP — All rights reserved.-->
+<!--                </small>-->
+
+<!--                <div class="d-flex gap-3">-->
+<!--                    <a th:href="@{/privacy}" class="text-light text-decoration-underline small">Privacy</a>-->
+<!--                    <a th:href="@{/terms}" class="text-light text-decoration-underline small">Terms</a>-->
+<!--                    <a th:if="${footerInfo.facebookUrl}" th:href="${footerInfo.facebookUrl}" class="text-light" aria-label="Facebook">-->
+<!--                        <i class="fab fa-facebook fa-lg"></i>-->
+<!--                    </a>-->
+<!--                    <a th:if="${footerInfo.instagramUrl}" th:href="${footerInfo.instagramUrl}" class="text-light" aria-label="Instagram">-->
+<!--                        <i class="fab fa-instagram fa-lg"></i>-->
+<!--                    </a>-->
+<!--                    <a th:if="${footerInfo.twitterUrl}" th:href="${footerInfo.twitterUrl}" class="text-light" aria-label="Twitter">-->
+<!--                        <i class="fab fa-twitter fa-lg"></i>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</footer>-->
+
+
+<!-- Scroll to top (optional UX feature) -->
+<button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="btn btn-dark rounded-circle position-fixed bottom-0 end-0 m-4" title="Back to top">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+</body>
+</html>

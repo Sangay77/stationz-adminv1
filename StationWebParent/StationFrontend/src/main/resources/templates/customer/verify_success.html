@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security6">
-
-<head th:replace="~{fragments::page_head('Verification Succeeded!')}"></head>
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{_layout}">
 
 <body>
 
-<div th:replace="~{fragments::navbar}"></div>
+<div layout:fragment="content">
 
 <div style="margin-top: 40px;"></div>
 
@@ -16,7 +15,6 @@
     <p><a th:href="@{/login}">Login here</a></p>
 </div>
 
-<div th:replace="~{fragments::footer}"></div>
-
+</div>
 </body>
 </html>

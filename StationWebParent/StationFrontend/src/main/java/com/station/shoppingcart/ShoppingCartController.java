@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.List;
 
@@ -20,6 +21,7 @@ public class ShoppingCartController {
     private ShoppingCartService shoppingCartService;
     @Autowired
     private CustomerService customerService;
+
 
     @GetMapping("/cart")
     public String viewCart(Model model, HttpServletRequest request) throws CustomerNotFoundException {
@@ -32,7 +34,6 @@ public class ShoppingCartController {
         }
         model.addAttribute("cartItems", cartItems);
         model.addAttribute("estimatedTotal", estimatedTotal);
-
 
         model.addAttribute("cartItems",cartItems);
         return "cart/shopping_cart";

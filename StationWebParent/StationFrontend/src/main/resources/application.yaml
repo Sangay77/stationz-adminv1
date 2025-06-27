@@ -3,7 +3,7 @@ spring:
     name: station-project-frontend
 
   datasource:
-    url: ${db_url}
+    url: jdbc:mysql://localhost:3306/stationdb
     username: ${db_username}
     password: ${db_password}
     hikari:
@@ -13,6 +13,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+    show-sql: false
 
   security:
     oauth2:
@@ -25,23 +26,24 @@ spring:
               - profile
               - email
 
+server:
+  port: 8087
+  servlet:
+    session:
+      timeout: 5m
+
 logging:
   level:
-    org:
-      thymeleaf: DEBUG
-      springframework:
-        security: DEBUG
-
-server:
-  port: 8080
-
-# Custom RMA-related configuration
-address:
-  base:
-    url: http://uatbfssecure.rma.org.bt:8080/BFSSecure/nvpapi
+    org.thymeleaf: DEBUG
+    org.springframework.security: DEBUG
 
 beneficiary:
   benf_id: BE10000221
+  rma_api_url: http://uatbfssecure.rma.org.bt:8080/BFSSecure/nvpapi
+
+#keys:
+#  private-path: classpath:pki/BE10000221.key
 
 keys:
-  private-path: classpath:pki/BE10000221.key
+  private-path: ${PRIVATE_KEY_PATH}
+

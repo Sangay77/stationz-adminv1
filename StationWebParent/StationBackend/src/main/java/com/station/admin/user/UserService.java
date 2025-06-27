@@ -1,5 +1,6 @@
 package com.station.admin.user;
 
+import com.station.common.dto.UserDTO;
 import com.station.common.entity.Role;
 import com.station.common.entity.User;
 import jakarta.persistence.EntityNotFoundException;
@@ -52,30 +53,10 @@ public class UserService {
         return roleRepository.findAll();
     }
 
-    public User saveUser(User user) {
-        if (user == null) {
-            throw new IllegalArgumentException("User cannot be null");
-        }
-
-        if (user.getId() != null) {
-            userRepository.findById(user.getId()).ifPresent(existingUser -> {
-                if (user.getPassword() == null || user.getPassword().isEmpty()) {
-                    user.setPassword(existingUser.getPassword());
-                } else {
-                    encodePassword(user);
-                }
-            });
-        } else {
-            encodePassword(user);
-        }
-
-        return userRepository.save(user);
+    public String encodePassword(String plainPassword) {
+        return passwordEncoder.encode(plainPassword);
     }
 
-    public void encodePassword(User user) {
-        String encodedPassword = passwordEncoder.encode(user.getPassword());
-        user.setPassword(encodedPassword);
-    }
 
     public boolean isEmailUnique(Integer id, String email) {
         User existingUser = userRepository.getUserByEmail(email);
@@ -127,20 +108,53 @@ public class UserService {
 
         if (!userInForm.getPassword().isEmpty()) {
             userInDB.setPassword(userInForm.getPassword());
-            encodePassword(userInDB);
+            encodePassword(userInDB.getPassword());
         }
         if (userInForm.getPhotos() != null) {
             userInDB.setPhotos(userInForm.getPhotos());
         }
 
-        if (!userInForm.getFirstName().isEmpty()){
+        if (!userInForm.getFirstName().isEmpty()) {
             userInDB.setFirstName(userInForm.getFirstName());
         }
-        if (!userInForm.getLastName().isEmpty()){
+        if (!userInForm.getLastName().isEmpty()) {
             userInDB.setLastName(userInForm.getLastName());
         }
 
 
         return userRepository.save(userInDB);
     }
+
+    public boolean existsById(Integer id) {
+        return userRepository.existsById(id);
+    }
+
+    public User saveUser(User user) {
+        return userRepository.save(user);
+    }
+
+    public User updateUser(User user, UserDTO userDTO) {
+        if (userDTO.getEmail() != null && !userDTO.getEmail().isBlank()) {
+            user.setEmail(userDTO.getEmail());
+        }
+        if (userDTO.getFirstName() != null && !userDTO.getFirstName().isBlank()) {
+            user.setFirstName(userDTO.getFirstName());
+        }
+        if (userDTO.getLastName() != null && !userDTO.getLastName().isBlank()) {
+            user.setLastName(userDTO.getLastName());
+        }
+        user.setEnabled(userDTO.isEnabled()); // always update
+
+        if (userDTO.getRoles() != null && !userDTO.getRoles().isEmpty()) {
+            user.setRoles(userDTO.getRoles());
+        }
+
+        if (userDTO.getPassword() != null && !userDTO.getPassword().isBlank()) {
+            user.setPassword(encodePassword(userDTO.getPassword()));
+        }
+
+        return userRepository.save(user);
+    }
+
+
 }

@@ -71,4 +71,18 @@ public class ShoppingCartService {
     public void removeProduct(Integer productId, Customer customer) {
         cartItemRepository.deleteByCustomerAndProduct(customer.getId(), productId);
     }
+
+    public int getTotalQuantity(Customer customer) {
+        List<CartItem> cartItems = listCartItems(customer);
+        int total = 0;
+        for (CartItem item : cartItems) {
+            total += item.getQuantity();
+        }
+        return total;
+    }
+
+
+    public void removeCartItems(Customer authenticatedCustomer) {
+        cartItemRepository.deleteByCustomer(authenticatedCustomer);
+    }
 }

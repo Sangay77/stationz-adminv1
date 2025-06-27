@@ -54,4 +54,12 @@ public class ReviewService {
     }
 
 
+    public boolean didCustomerReviewProduct(Customer customer, Integer productId) {
+        return reviewRepository.existsByCustomerIdAndProductId(customer.getId(), productId);
+    }
+
+    public boolean canCustomerReviewProduct(Integer customerId, Integer productId) {
+        return !reviewRepository.existsByCustomerIdAndProductId(customerId, productId);
+    }
+
 }

@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security6">
-
-<head th:replace="~{fragments::page_head('Verification Failed!')}"></head>
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{_layout}">
 
 <body>
 
-<div th:replace="~{fragments::navbar}"></div>
+<div layout:fragment="content">
 
 <div style="margin-top: 40px;"></div>
 
@@ -15,7 +14,6 @@
     <h4>Your account was already verified, or the verification code in invalid.</h4>
 </div>
 
-<div th:replace="~{fragments::footer}"></div>
-
+</div>
 </body>
 </html>

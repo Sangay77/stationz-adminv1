@@ -82,6 +82,12 @@
                             </a>
                         </li>
 
+                        <li class="nav-item" sec:authorize="hasAuthority('Admin')">
+                            <a class="nav-link text-light d-flex align-items-center py-2 px-3 rounded-2" th:href="@{/admin/footer}">
+                                <i class="fas fa-cog me-2"></i> Footer Setting
+                            </a>
+                        </li>
+
                     </ul>
                 </div>
             </li>

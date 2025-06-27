@@ -1,18 +1,29 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security6">
-<div th:replace="~{fragments::page_head('Error Station-Admin')}"></div>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security6"
+      layout:decorate="~{_layout}">
+
+<head>
+    <title>Error - Station Admin</title>
+</head>
+
 <body>
 
-<div class="container-fluid">
-    <div th:replace="~{fragments:: navbar}">
+<div layout:fragment="content">
+
+    <div class="container text-center py-5">
+        <div class="mb-4">
+            <i class="bi bi-x-octagon display-1 text-danger"></i>
+        </div>
+        <h2 class="fw-bold mb-3">Something went wrong</h2>
+        <p class="text-muted mb-4">
+            Sorry, the server encountered an error while processing your request.
+        </p>
+        <a th:href="@{/}" class="btn btn-outline-primary">
+            <i class="bi bi-house-door me-2"></i>Back to Home
+        </a>
     </div>
-
-    <div class="m-3">
-        <h2>Sorry, the server has encountered the error while processing the request</h2>
-    </div>
-
-    <div th:replace="~{fragments::footer}"></div>
-
 
 </div>
 

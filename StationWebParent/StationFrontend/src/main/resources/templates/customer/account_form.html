@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments::page_head(${pageTitle})}">
-</head>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{_layout}">
 
-<body class="bg-light">
+<body>
 
-<!-- Navbar -->
-<div th:replace="~{fragments::navbar}"></div>
+<div layout:fragment="content">
 
 <!-- Title -->
 <section class="py-4 text-center">
@@ -104,9 +103,6 @@
     </div>
 </div>
 
-<!-- Footer -->
-<div th:replace="~{fragments::footer}"></div>
-
 <!-- Password Matching Script -->
 <script>
     function checkPasswordMatch(confirmInput) {
@@ -116,6 +112,6 @@
         messageDiv.style.display = password !== confirmPassword ? 'block' : 'none';
     }
 </script>
-
+</div>
 </body>
 </html>

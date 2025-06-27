@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{_layout}">
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+
+<body>
+<div layout:fragment="content" class="py-5 bg-light">
+    <div class="container">
+        <!-- Header -->
+        <div class="text-center mb-2">
+            <span class="badge bg-warning text-dark px-3 py-2 fs-6 mb-3">
+                <i class="bi bi-laptop-fill me-1"></i>
+                Office Cleaning
+            </span>
+            <h2 class="fw-bold display-5 text-primary">Our Professional Cleaning Services</h2>
+            <p class="text-muted fs-5 mt-3">
+                Keeping your workspace spotless, professional, and eco-friendly—every single day.
+            </p>
+        </div>
+
+        <!-- Content Card -->
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card shadow-lg border-0">
+                    <div class="card-body p-5 fs-5 text-justify">
+                        <div class="mb-4">
+                            <i class="bi bi-person-workspace text-warning fs-3 me-2"></i>
+<!--                            <strong class="fs-4">Dependable & Green Office Cleaning Solutions</strong>-->
+                        </div>
+
+                        <p>
+                            STATION Cleaning Group provides professional cleaning tasks that involve a comprehensive approach to maintaining office in a clean, hygienic, and environmentally responsible manner. Core duties include dusting, vacuuming, and mopping all areas to ensure surfaces are free of dirt and debris. Bathrooms are thoroughly cleaned, with particular attention to hygiene, and hand towels and tissue papers are regularly replaced.
+                        </p>
+
+                        <p>
+                            Only environmentally friendly cleaning chemicals are used throughout the process, ensuring the safety of residents and contributing to sustainability. Specialized equipment such as I-mops and scrubbers is used for deep cleaning of floors and other surfaces. Windows, walls, doors, and glass surfaces are cleaned to remove smudges, stains, and dust, maintaining a polished and fresh appearance.
+                        </p>
+
+                        <p>
+                            Additional attention is given to often-overlooked areas such as card readers, which are carefully dusted, as well as cobweb removal from ceilings and corners. Waste management includes regular emptying of dustbins and responsible disposal.
+                        </p>
+
+                        <p>
+                            The tasks are designed to uphold high standards of cleanliness while minimizing environmental impact. Furthermore, cleaners are required to provide daily reports and updates detailing the progress and condition of the worksite, promoting transparency, accountability, and effective communication. These responsibilities ensure living spaces remain visually appealing, hygienic, and eco-conscious.
+                        </p>
+
+                        <div class="mt-5 text-end">
+                            <a href="/contact" class="btn btn-primary btn-lg">
+                                <i class="bi bi-calendar-check-fill me-2"></i>
+                                Book a Cleaning Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

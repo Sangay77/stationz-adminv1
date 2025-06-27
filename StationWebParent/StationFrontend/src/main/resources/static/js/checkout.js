@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
             .then(response => {
                 if (!response.ok) throw new Error("Network response was not ok");
+                console.error("HTTP Error:", response.status);
                 return response.json();
             })
             .then(result => {
@@ -61,6 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     form.reset();
                     form.classList.remove("was-validated");
                 } else {
+                    console.error("HTTP Error:", response.status);
                     alert("❌ Payment failed: " + (result.bfs_responseDesc || "Unknown error."));
                 }
             })
@@ -119,50 +121,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     });
 
-    // Verify OTP button logic
-//    document.getElementById("verifyOtpBtn").addEventListener("click", function () {
-//        const otpInput = document.getElementById("otpInput");
-//        const otp = otpInput.value.trim();
-//        if (otp.length !== 6) {
-//            otpInput.classList.add("is-invalid");
-//            alert("⚠️ Please enter a valid 6-digit OTP.");
-//            return;
-//        } else {
-//            otpInput.classList.remove("is-invalid");
-//        }
-//
-//        // Prepare OTP verification payload
-//        const otpPayload = {
-//            bfs_remitterOtp: otp,
-//            bfs_bfsTxnId: document.getElementById("txnIdDisplay").value.trim()
-//        };
-//
-//        fetch("/station/debit", {
-//            method: "POST",
-//            headers: {
-//                "Content-Type": "application/json",
-//                "X-CSRF-TOKEN": csrfToken
-//            },
-//            body: JSON.stringify(otpPayload)
-//        })
-//        .then(res => {
-//            if (!res.ok) throw new Error("OTP verification failed");
-//            return res.json();
-//        })
-//        .then(resp => {
-//            if (resp.bfs_responseDesc?.toLowerCase() === "success") {
-//                alert("✅ OTP verified successfully! Your payment is complete.");
-//                otpSection.classList.add("d-none");
-//                // Optionally redirect or show success page here
-//            } else {
-//                alert("❌ OTP verification failed: " + (resp.bfs_responseDesc || "Invalid OTP."));
-//            }
-//        })
-//        .catch(err => {
-//            console.error(err);
-//            alert("❌ Failed to verify OTP.");
-//        });
-//    });
 
 // Verify OTP button logic
 document.getElementById("verifyOtpBtn").addEventListener("click", function () {
@@ -195,19 +153,44 @@ document.getElementById("verifyOtpBtn").addEventListener("click", function () {
         return res.json();
     })
     .then(resp => {
-         if (resp.status === "success") {
-                alert("✅ OTP verified successfully! Your payment is complete.");
+        if (resp.status === "success") {
+            alert("✅ OTP verified successfully! Your payment is complete.");
+            otpSection.classList.add("d-none");
 
-                otpSection.classList.add("d-none");
+            // Show the final success page/section
+            const successSection = document.getElementById("paymentSuccessSection");
+            successSection.classList.remove("d-none");
 
-                // Show the final success page/section
-                const successSection = document.getElementById("paymentSuccessSection");
-                successSection.classList.remove("d-none");
-            } else {
-                const failCode = resp.failedCode || "Invalid OTP";
-                alert(`❌ OTP verification failed: ${failCode}`);
-            }
+            // 🧹 Clear the cart (backend call)
+            fetch("/cart/remove-after-payment", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": csrfToken
+                }
+            })
+            .then(clearRes => {
+                if (!clearRes.ok) throw new Error("Failed to clear cart");
+                return clearRes.text();
+            })
+            .then(data => {
+                console.log("🛒 Cart cleared:", data);
+                // Optional: update cart count in navbar
+                const cartCountElem = document.getElementById("cartCount");
+                if (cartCountElem) {
+                    cartCountElem.textContent = "0";
+                }
+            })
+            .catch(err => {
+                console.error("❌ Error clearing cart:", err);
+            });
+
+        } else {
+            const failCode = resp.failedCode || "Invalid OTP";
+            alert(`❌ OTP verification failed: ${failCode}`);
+        }
     })
+
     .catch(err => {
         console.error(err);
         alert("❌ Failed to verify OTP.");

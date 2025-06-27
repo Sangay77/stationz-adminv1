@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Product Reviews</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{_layout}">
+
 <body>
+
+<div layout:fragment="content">
 
 <div th:fragment="content" class="container mt-4" id="topReviews">
 
@@ -30,7 +31,7 @@
                        data-readonly="true"
                        data-theme="krajee-svg"
                        data-show-clear="false"
-                       data-show-caption="false" />
+                       data-show-caption="false"/>
                 <span id="ratingNumber" class="fw-bold">[[${product.averageRating}]]</span>
                 <span>of 5</span>
             </div>
@@ -39,8 +40,22 @@
         <!-- Link to View All -->
         <div class="row mb-3">
             <div class="col text-center">
-                <a th:href="@{'/ratings/'+${product.alias}}" class="text-decoration-none">View all [[${product.reviewCount}]] ratings</a>
+                <a th:href="@{'/ratings/'+${product.alias}}" class="text-decoration-none">View all
+                    [[${product.reviewCount}]] ratings</a>
             </div>
+        </div>
+
+        <div th:if="${customerReview}" class="row m-1 ml-3">
+            <span class="text-success">You already reviewed this product.</span>
+        </div>
+
+        <div th:if="${customerCanReview}" class="row m-1 ml-3">
+            <span class="text-info">
+                You purchased and got this product.
+                <b>
+                    <a th:href="@{'/write_review/product/'+${product.id}}">Write Your Review Now</a>
+                </b>
+            </span>
         </div>
 
         <!-- Individual Reviews -->
@@ -51,7 +66,7 @@
                            class="kv-ltr-theme-svg-star rating-loading"
                            dir="ltr"
                            data-size="xs"
-                           th:value="${product.averageRating}" />
+                           th:value="${product.averageRating}"/>
                 </div>
 
                 <h5 class="fw-semibold">[[${review.headline}]]</h5>
@@ -62,6 +77,6 @@
     </div>
 
 </div>
-
+</div>
 </body>
 </html>

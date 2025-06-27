@@ -2,11 +2,15 @@ package com.station.product;
 
 import com.station.category.CategoryService;
 import com.station.common.entity.Category;
+import com.station.common.entity.Customer;
 import com.station.common.entity.Product;
 import com.station.common.entity.Review;
 import com.station.common.exception.CategoryNotFoundException;
 import com.station.common.exception.ProductNotFoundException;
+import com.station.customer.CustomerService;
 import com.station.review.ReviewService;
+import com.station.utility.Utility;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -25,7 +29,19 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @Autowired private ReviewService reviewService;
+    @Autowired
+    private ReviewService reviewService;
+    @Autowired
+    private CustomerService customerService;
+
+
+    @GetMapping("/products")
+    public String homePage(Model model) {
+
+        List<Category> EnabledCategoryList = categoryService.categories();
+        model.addAttribute("EnabledCategoryList", EnabledCategoryList);
+        return "product/products";
+    }
 
 
     @GetMapping("/c/{category_alias}")
@@ -56,15 +72,28 @@ public class ProductController {
     }
 
     @GetMapping("/p/{product_alias}")
-    public String viewProductDetail(@PathVariable("product_alias") String alias, Model model) throws CategoryNotFoundException {
+    public String viewProductDetail(@PathVariable("product_alias") String alias,
+                                    Model model, HttpServletRequest httpServletRequest) throws CategoryNotFoundException {
 
         try {
             Product product = productService.getProduct(alias);
             Category category = product.getCategory();
             Page<Review> reviews = reviewService.list3MostRecentReviewsByProduct(product);
+
+            Customer customer = getAuthenticatedCustomer(httpServletRequest);
+            boolean customerReviewed = reviewService.didCustomerReviewProduct(customer, product.getId());
+
+            if (customerReviewed) {
+                model.addAttribute("customerReviewed", customerReviewed);
+            } else {
+                boolean customerCanReview = reviewService.canCustomerReviewProduct(customer.getId(), product.getId());
+                model.addAttribute("customerCanReview", customerCanReview);
+
+            }
+
             model.addAttribute("category", category);
             model.addAttribute("product", product);
-            model.addAttribute("pageTitle",product.getName());
+            model.addAttribute("pageTitle", product.getName());
             model.addAttribute("showRating", true);
             model.addAttribute("reviews", reviews);
             return "product/product_details";
@@ -72,6 +101,11 @@ public class ProductController {
         } catch (ProductNotFoundException ex) {
             return "error/404";
         }
+    }
+
+    private Customer getAuthenticatedCustomer(HttpServletRequest httpServletRequest) {
+        String email = Utility.getEMailOfAuthenticatedToken(httpServletRequest);
+        return customerService.getCustomerByEmail(email);
     }
 
 

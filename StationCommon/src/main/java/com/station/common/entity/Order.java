@@ -61,6 +61,4 @@ public class Order {
         setPostalCode(customer.getPostalCode());
         setCountry("BHUTAN");
     }
-
-
 }

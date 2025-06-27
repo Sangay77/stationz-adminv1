@@ -1,5 +1,6 @@
 package com.station.security;
 
+import com.station.global.CustomAuthEntryPoint;
 import com.station.security.oauth.CustomerOAuth2UserService;
 import com.station.security.oauth.OAuth2LoginSuccessHandler;
 import org.springframework.context.annotation.Bean;
@@ -23,13 +24,15 @@ public class WebSecurityConfig {
     private final CustomerOAuth2UserService customerOAuth2UserService;
     private final OAuth2LoginSuccessHandler oAuth2LoginSuccessHandler;
     private final PasswordEncoder passwordEncoder;
+    private final CustomAuthEntryPoint customAuthEntryPoint;
 
-    public WebSecurityConfig(UserDetailsService userDetailsService, DatabaseSuccessLoginHandler databaseSuccessLoginHandler, CustomerOAuth2UserService customerOAuth2UserService, OAuth2LoginSuccessHandler oAuth2LoginSuccessHandler, PasswordEncoder passwordEncoder) {
+    public WebSecurityConfig(UserDetailsService userDetailsService, DatabaseSuccessLoginHandler databaseSuccessLoginHandler, CustomerOAuth2UserService customerOAuth2UserService, OAuth2LoginSuccessHandler oAuth2LoginSuccessHandler, PasswordEncoder passwordEncoder, CustomAuthEntryPoint customAuthEntryPoint) {
         this.userDetailsService = userDetailsService;
         this.databaseSuccessLoginHandler = databaseSuccessLoginHandler;
         this.customerOAuth2UserService = customerOAuth2UserService;
         this.oAuth2LoginSuccessHandler = oAuth2LoginSuccessHandler;
         this.passwordEncoder = passwordEncoder;
+        this.customAuthEntryPoint = customAuthEntryPoint;
     }
 
 
@@ -50,9 +53,15 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/css/**", "/js/**", "/images/**", "/webjars/**").permitAll()
-                        .requestMatchers("/account_details","/update_account_details","/cart").authenticated()
+                        .requestMatchers(
+                                "/css/**", "/js/**", "/images/**", "/webjars/**",
+                                "/fontawesome/**", "/webfonts/**", "/richtext/**", "/star-rating/**",
+                                "/user-photos/**", "/category-image/**", "/product-images/**", "/site-logo/**"
+                        ).permitAll()
                         .anyRequest().permitAll()
+                )
+                .exceptionHandling(exception -> exception
+                        .authenticationEntryPoint(customAuthEntryPoint) // use your custom entry point
                 )
                 .formLogin(form -> form
                         .loginPage("/login")
@@ -68,7 +77,7 @@ public class WebSecurityConfig {
                 )
                 .logout(logout -> logout
                         .logoutUrl("/logout")
-                        .logoutSuccessUrl("/login?logout")
+                        .logoutSuccessUrl("/?logout")
                         .permitAll()
                 )
                 .rememberMe(rememberMe -> rememberMe

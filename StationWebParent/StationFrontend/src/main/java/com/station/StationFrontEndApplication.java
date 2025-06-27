@@ -3,6 +3,7 @@ package com.station;
 import jakarta.annotation.PostConstruct;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 
 @SpringBootApplication
@@ -12,14 +13,6 @@ public class StationFrontEndApplication {
 
         SpringApplication.run(StationFrontEndApplication.class, args);
 
-
-
-    }
-
-    @PostConstruct
-    public void printEnvVars() {
-        System.out.println("GOOGLE_CLIENT_ID = " + System.getenv("GOOGLE_CLIENT_ID"));
-        System.out.println("GOOGLE_CLIENT_SECRET = " + System.getenv("GOOGLE_CLIENT_SECRET"));
     }
 
 }

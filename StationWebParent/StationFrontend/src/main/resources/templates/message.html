@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security6">
-<head th:replace="~{fragments::page_head('Reset password Page')}"></head>
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{_layout}">
 
 <body>
 
-<div th:replace="~{fragments::navbar}"></div>
+<div layout:fragment="content">
 
-<!-- Header Section -->
-<div class="container my-5">
-    <div class="text-center" th:if="${message!=null}">
-        <h3>[[${message}]]</h3>
+    <!-- Header Section -->
+    <div class="container my-5">
+        <div class="text-center" th:if="${message!=null}">
+            <h3>[[${message}]]</h3>
 
+        </div>
     </div>
+
+
 </div>
-
-
-
-<div th:replace="~{fragments::footer}"></div>
-
 </body>
 </html>
